@@ -22,3 +22,14 @@ html {
     //     font-size: 75%; //1rem = 12, 12/16
     // }
 }
+
+#page {
+    display:flex; 
+    flex-direction: column; 
+}
+
+.container {
+    width: 100%; 
+    max-width: 144rem; 
+    margin: auto; 
+}

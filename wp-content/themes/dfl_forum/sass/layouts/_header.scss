@@ -1,3 +1,64 @@
+.site-header {
+	width: 100%; 
+	display:flex; 
+	flex-direction: column; 
+
+	&__logo {
+
+		.site-title {
+			display: none; 
+		}
+	}
+	
+	&__topnav {
+		width: 100%; 
+		background-image:none;
+		background: $color-blue;
+		border: none;
+		padding: 10px 25px 0px 25px;
+		margin-bottom: 3rem; 
+	}
+
+	&__navigation {
+		display: flex; 
+		flex-direction: row; 
+		margin-top: 3rem; 
+
+		ul {
+			display: flex; 
+			width: 100%; 
+			list-style: none; 
+
+			li {
+				background: $color-red;
+				font-size: 1.6rem;
+				line-height: 3.6rem;
+				margin-right: .5rem;
+
+				a {
+					text-decoration: underline; 
+					color: #fff;
+					text-decoration: none;
+					text-transform: uppercase;
+					text-align: center;
+					opacity: 1;
+					font-size: 1.3rem;
+					line-height: 1.5rem;
+					padding: 0.7rem 0 0.7rem 1.2rem;
+					margin: 0 1rem 0 0;
+				}
+			}
+		}
+	}
+
+	&__submenu {
+		
+		ul {
+			display: flex; 
+		}
+	}
+}
+
 
 @media screen and (min-width: 769px ) {
 
@@ -22,24 +83,6 @@
     	font-weight: bold;
 	}
 
-	#HeaderNav1 {
-	    margin: 5px 0 0 0;
-	    line-height: 35px;
-	    padding-top: 7px;
-		height: 50px;
-		
-		ul {
-
-		}
-	}
-
-	#Header {
-		margin: 0;
-		padding: 10px 25px 0px 25px;
-		background-image:none;
-		background: linear-gradient(#424242 , #1B1B1B);
-		border: none;
-	}
 
 	#HeaderNav2{
 

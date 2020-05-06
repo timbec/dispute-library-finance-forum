@@ -14,14 +14,14 @@
 //     });
 // }
 
-function AjaxExp(e) {
-    console.log(e); 
-    e.preventDefault(); 
+// function AjaxExp(e) {
+//     console.log(e); 
+//     e.preventDefault(); 
 
-    alert(this);
+//     alert(this);
     
     
-}
+// }
 
 // $(document).ready(function() { /// Wait till page is loaded
 //     $('#detailed').click(function(){

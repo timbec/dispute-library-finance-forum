@@ -15,7 +15,7 @@
 get_header();
 ?>
 <h4>forums.php from the theme</h4>
-<div id="site-content">
+<div id="site-content" class="container">
 	<main id="primary" class="site-main">
 
 		<?php

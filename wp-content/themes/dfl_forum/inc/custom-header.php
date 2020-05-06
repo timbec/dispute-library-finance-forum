@@ -17,6 +17,7 @@
  * @uses dfl_forum_header_style()
  */
 function dfl_forum_custom_header_setup() {
+
 	add_theme_support(
 		'custom-header',
 		apply_filters(

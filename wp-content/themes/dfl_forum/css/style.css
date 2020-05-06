@@ -313,6 +313,15 @@ ORDER: Base + typography > general layout + grid > page layout > components
 html {
   font-size: 62.5%; }
 
+#page {
+  display: flex;
+  flex-direction: column; }
+
+.container {
+  width: 100%;
+  max-width: 144rem;
+  margin: auto; }
+
 /* Login Styling */
 #login_box {
   background-color: rgba(168, 26, 56, 0.8);
@@ -362,6 +371,49 @@ html {
   font-weight: bold;
   font-size: 1.5em !important; }
 
+#bbpress-forums li.bbp-header {
+  background: #5b7667; }
+
+.site-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  .site-header__logo .site-title {
+    display: none; }
+  .site-header__topnav {
+    width: 100%;
+    background-image: none;
+    background: #4d2a69;
+    border: none;
+    padding: 10px 25px 0px 25px;
+    margin-bottom: 3rem; }
+  .site-header__navigation {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem; }
+    .site-header__navigation ul {
+      display: flex;
+      width: 100%;
+      list-style: none; }
+      .site-header__navigation ul li {
+        background: #a91a38;
+        font-size: 1.6rem;
+        line-height: 3.6rem;
+        margin-right: .5rem; }
+        .site-header__navigation ul li a {
+          text-decoration: underline;
+          color: #fff;
+          text-decoration: none;
+          text-transform: uppercase;
+          text-align: center;
+          opacity: 1;
+          font-size: 1.3rem;
+          line-height: 1.5rem;
+          padding: 0.7rem 0 0.7rem 1.2rem;
+          margin: 0 1rem 0 0; }
+  .site-header__submenu ul {
+    display: flex; }
+
 @media screen and (min-width: 769px) {
   /* How to styling */
   .how-to-content p {
@@ -375,19 +427,6 @@ html {
   margin: 0px !important;
   padding: 0;
   font-weight: bold; }
-
-#HeaderNav1 {
-  margin: 5px 0 0 0;
-  line-height: 35px;
-  padding-top: 7px;
-  height: 50px; }
-
-#Header {
-  margin: 0;
-  padding: 10px 25px 0px 25px;
-  background-image: none;
-  background: linear-gradient(#424242, #1B1B1B);
-  border: none; }
 
 #HeaderNav2 {
   float: left;

@@ -1,0 +1,104 @@
+.HomeSiteTextInner {
+    background: $color-red; 
+}
+
+@media screen and (min-width: 769px ){
+	/* Home body CSS */
+
+
+	#HomeSiteText.dashtext{
+		background: $color-red; 
+		margin-left: 35%;
+		border-radius: 0px;	
+
+	}
+
+	#HomePanelContainer{
+		margin-left: 35%;
+		width: 40%;
+		padding: 10px;
+	}
+
+	.HomePanel {
+	    margin: 0px 0px 15px 0px;
+	    width: 48%;
+	    float: left;
+	}
+
+	.HomePanelIN{
+		border-radius: 0px;
+		background: rgba(168, 26, 56, 0.8);
+
+	}
+
+	.oddPanel{
+		float: right !important;
+		margin-right: -10px;
+	}
+
+	#SearchBoxPanel{
+        background: $color-red; 
+        border-radius: 0px;
+        
+        .searchbutton {
+            background: white; 
+            color: $color-red; 
+            opacity: 1; 
+
+            &:hover {
+                opacity: 0.7; 
+            }
+        }
+    }
+    
+    #SearchBox, .PopupCategoryTree, #BrowseBar, #BrowseBarTab {
+        background: $color-green;
+        
+    }
+
+    #HomeSiteText.dashtext, .HomePanelIN {
+        background: $color-red; 
+    }
+
+	.HomePanelDynamicDash, .HomePanelThemes {
+	    padding: 0;
+	    overflow: hidden;
+	    position: relative;
+	    width: 100%;
+	}
+
+	.HomePanelIN {
+	    padding: 15px;
+	    min-height: 0px;
+	}
+
+	.HomePanelDynamicDash, .HomePanelThemes {
+	    padding: 0;
+	    overflow: hidden;
+	    position: relative;
+	    width: 100%;
+	    height: auto;
+	    text-align: center;
+	}
+
+	.evenPanel {
+
+		margin-left: -10px;
+
+	}
+
+	#CentralSpaceLogin{
+		top: 35% !important;
+	}
+
+	.ui-layout-container #CentralSpaceLogin{
+		top: 20% !important;
+	}
+
+	/* Home Button styling */
+
+	.HomePanelDynamicDash h2, .HomePanelThemes h2, .FeaturedSimpleTileContents h2 {
+	    font-size: 15px !important;
+	}
+
+}

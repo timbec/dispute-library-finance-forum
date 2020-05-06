@@ -1,0 +1,16 @@
+
+
+#UICenter::-webkit-scrollbar {
+    background-color: $color-red; 
+    width: 10px; 
+    opacity: 0.4; 
+}
+
+.main-content {
+    width: 90rem; 
+}
+
+/**Might need to revert this if creates problems later**/
+.ui-layout-pane {
+    overflow: scroll; 
+}

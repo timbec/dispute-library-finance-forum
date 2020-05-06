@@ -1,0 +1,552 @@
+/*!
+Theme Name: DFL_Forum
+Theme URI: http://underscores.me/
+Author: Tim Beckett
+Author URI: https://tim-beckett.com
+Description: Forum for DFL website
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: dfl_forum
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+DFL_Forum is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+/* Document
+	 ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%; }
+
+/* Sections
+	 ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0; }
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+/* Grouping content
+	 ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible; }
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+/* Text-level semantics
+	 ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent; }
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted; }
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder; }
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sub {
+  bottom: -0.25em; }
+
+sup {
+  top: -0.5em; }
+
+/* Embedded content
+	 ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none; }
+
+/* Forms
+	 ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0; }
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  overflow: visible; }
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  text-transform: none; }
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; }
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0; }
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText; }
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em; }
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *		`fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal; }
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline; }
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto; }
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0; }
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px; }
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit; }
+
+/* Interactive
+	 ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block; }
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item; }
+
+/* Misc
+	 ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none; }
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none; }
+
+/*Color Variables*/
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+ORDER: Base + typography > general layout + grid > page layout > components
+1em = 16px
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+/* Login Styling */
+#login_box {
+  background-color: rgba(168, 26, 56, 0.8);
+  border: 0px solid #B0B0B0;
+  top: 0px; }
+
+.Question-login label, .Question-loginSubmit label {
+  width: 300px;
+  float: left;
+  margin-top: 0.3em;
+  padding-right: 10px; }
+
+.Question-login, .Question-loginSubmit {
+  border-bottom: 1px solid rgba(168, 26, 56, 0.8); }
+
+.Question-loginSubmit {
+  padding: 1em 0em 1em 0.5em; }
+
+.QuestionSubmit {
+  border-bottom: 0px solid #ddd; }
+
+#HeaderNav2 {
+  max-width: 96%;
+  margin: 0 4rem; }
+  #HeaderNav2 ul {
+    display: flex;
+    overflow: visible; }
+    #HeaderNav2 ul li {
+      background: #a91a38;
+      font-size: 1.6rem;
+      line-height: 3.6rem;
+      margin-right: .5rem; }
+      #HeaderNav2 ul li a {
+        margin: 0 1rem 0 0;
+        padding: 0.7rem 0 0.7rem 1.2rem;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        opacity: 1;
+        font-size: 1.3rem;
+        line-height: 1.5rem; }
+        #HeaderNav2 ul li a:hover {
+          opacity: 0.7; }
+
+.advanced-search-container {
+  font-weight: bold;
+  font-size: 1.5em !important; }
+
+@media screen and (min-width: 769px) {
+  /* How to styling */
+  .how-to-content p {
+    font-size: 20px; } }
+
+/* Home page styling */
+#SearchBarContainer {
+  margin-top: 4.25% !important; }
+
+.SearchSpace .SearchItem {
+  margin: 0px !important;
+  padding: 0;
+  font-weight: bold; }
+
+#HeaderNav1 {
+  margin: 5px 0 0 0;
+  line-height: 35px;
+  padding-top: 7px;
+  height: 50px; }
+
+#Header {
+  margin: 0;
+  padding: 10px 25px 0px 25px;
+  background-image: none;
+  background: linear-gradient(#424242, #1B1B1B);
+  border: none; }
+
+#HeaderNav2 {
+  float: left;
+  padding-left: 30px;
+  font-size: 18px;
+  margin: 5px 0 0 0;
+  line-height: 35px;
+  padding-top: 7px; }
+
+.HorizontalNav li, .HorizontalNav li {
+  zoom: 1;
+  display: inline;
+  padding: 0 0.35em 0 0.5em;
+  margin: 0px; }
+
+#HeaderNav2 {
+  margin: 5px 0 0 0;
+  line-height: 35px;
+  padding-top: 7px; }
+
+#HeaderImg {
+  max-height: 50px;
+  max-width: 320px;
+  clear: both;
+  display: inline-block;
+  height: auto; }
+
+#Header {
+  background: transparent;
+  display: flex;
+  padding: 0;
+  padding-bottom: 25rem; }
+
+#HeaderResponsive {
+  position: absolute;
+  top: 8rem;
+  margin: 0 4rem; }
+
+#Header #HeaderNav1 {
+  width: 100%;
+  text-align: right;
+  background: #4d2a69;
+  position: absolute;
+  top: 0;
+  display: flex !important;
+  justify-content: space-between;
+  padding: 1rem 3rem 0 3rem;
+  margin-top: 0; }
+  #Header #HeaderNav1 li.nyu-logo {
+    width: 16rem;
+    height: auto; }
+    #Header #HeaderNav1 li.nyu-logo a {
+      opacity: 1; }
+      #Header #HeaderNav1 li.nyu-logo a img {
+        width: 100%;
+        height: auto;
+        margin-top: .5rem; }
+  #Header #HeaderNav1 ul {
+    max-width: 144rem;
+    margin: 0 auto;
+    margin-right: 8rem; }
+    #Header #HeaderNav1 ul li.UploadButton a {
+      color: #4d2a69;
+      background: white;
+      opacity: 0.7; }
+      #Header #HeaderNav1 ul li.UploadButton a:hover {
+        opacity: 1; }
+      #Header #HeaderNav1 ul li.UploadButton a i {
+        color: #4d2a69; }
+
+#HeaderResponsive {
+  width: auto;
+  height: auto; }
+  #HeaderResponsive a {
+    height: auto; }
+    #HeaderResponsive a #HeaderImg {
+      max-height: 70px;
+      width: auto; }
+
+#HeaderNav2 {
+  position: absolute;
+  top: 16rem;
+  margin: 0 4rem; }
+
+#UICenter::-webkit-scrollbar {
+  background-color: #a91a38;
+  width: 10px;
+  opacity: 0.4; }
+
+.main-content {
+  width: 90rem; }
+
+/**Might need to revert this if creates problems later**/
+.ui-layout-pane {
+  overflow: scroll; }
+
+.CollectBack {
+  background: #4d2a69; }
+
+#CollectionDiv {
+  background: #4d2a69; }
+
+.HomeSiteTextInner {
+  background: #a91a38; }
+
+@media screen and (min-width: 769px) {
+  /* Home body CSS */
+  #HomeSiteText.dashtext {
+    background: #a91a38;
+    margin-left: 35%;
+    border-radius: 0px; }
+  #HomePanelContainer {
+    margin-left: 35%;
+    width: 40%;
+    padding: 10px; }
+  .HomePanel {
+    margin: 0px 0px 15px 0px;
+    width: 48%;
+    float: left; }
+  .HomePanelIN {
+    border-radius: 0px;
+    background: rgba(168, 26, 56, 0.8); }
+  .oddPanel {
+    float: right !important;
+    margin-right: -10px; }
+  #SearchBoxPanel {
+    background: #a91a38;
+    border-radius: 0px; }
+    #SearchBoxPanel .searchbutton {
+      background: white;
+      color: #a91a38;
+      opacity: 1; }
+      #SearchBoxPanel .searchbutton:hover {
+        opacity: 0.7; }
+  #SearchBox, .PopupCategoryTree, #BrowseBar, #BrowseBarTab {
+    background: #5b7667; }
+  #HomeSiteText.dashtext, .HomePanelIN {
+    background: #a91a38; }
+  .HomePanelDynamicDash, .HomePanelThemes {
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%; }
+  .HomePanelIN {
+    padding: 15px;
+    min-height: 0px; }
+  .HomePanelDynamicDash, .HomePanelThemes {
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center; }
+  .evenPanel {
+    margin-left: -10px; }
+  #CentralSpaceLogin {
+    top: 35% !important; }
+  .ui-layout-container #CentralSpaceLogin {
+    top: 20% !important; }
+  /* Home Button styling */
+  .HomePanelDynamicDash h2, .HomePanelThemes h2, .FeaturedSimpleTileContents h2 {
+    font-size: 15px !important; } }

@@ -1,0 +1,11 @@
+.mpto_snv {margin-right: 10px;}
+.mpto_snv #sortable > li:nth-child(2n+1) {background-color: #f9f9f9;}
+.mpto_snv #sortable > li {cursor: move;padding: 10px 15px;border: 1px solid #dddddd;color: #0073aa;}
+.mpto_snv #sortable > li > span.box{border-right: 1px solid #ddd; margin-right: 10px; padding-right: 10px;}
+.mpto_snv span.shortcode input,.mpto_snv span.shortcode textarea { background: rgba(0, 0, 0, 0.07) none repeat scroll 0 0;   border: medium none;    box-shadow: none;    color: inherit;    font-size: 12px;       margin: 10px 0;   padding: 4px 8px; width: 99%;}
+.mpto_snv button.button.button-primary.button-large {margin: 10px 4px;}
+.mpto_snv #display_query_code{width: 170px;}
+#mpto_custom_field{display: none;}
+.mpto_snv .querycode td {border-bottom: 1px solid;}
+.mpto_snv td:first-child {width: 25%;}
+

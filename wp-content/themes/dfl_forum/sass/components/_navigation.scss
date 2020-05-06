@@ -1,0 +1,35 @@
+
+
+#HeaderNav2 {
+     max-width: 96%; 
+     margin: 0 4rem;
+     
+    ul {
+        display: flex; 
+        overflow: visible; 
+
+        li {
+            background: #a91a38;
+            font-size: 1.6rem;
+            line-height: 3.6rem; 
+            margin-right: .5rem; 
+            
+            a {
+               margin: 0 1rem 0 0;
+               padding: 0.7rem 0 0.7rem 1.2rem;
+               color: #fff;
+               text-decoration: none;
+               text-transform: uppercase;
+               text-align: center;
+               opacity: 1; 
+               font-size: 1.3rem; 
+               line-height: 1.5rem;
+   
+               &:hover {
+                   opacity: 0.7; 
+               }
+            }
+   
+        }
+    }
+}

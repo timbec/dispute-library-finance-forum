@@ -1,0 +1,161 @@
+
+@media screen and (min-width: 769px ) {
+
+
+	/* How to styling */
+
+	.how-to-content p {
+		font-size: 20px;
+	}
+}
+
+
+	/* Home page styling */ 
+
+	#SearchBarContainer {
+		margin-top: 4.25% !important;
+	}
+
+	.SearchSpace .SearchItem{
+		margin: 0px !important;
+		padding: 0;
+    	font-weight: bold;
+	}
+
+	#HeaderNav1 {
+	    margin: 5px 0 0 0;
+	    line-height: 35px;
+	    padding-top: 7px;
+		height: 50px;
+		
+		ul {
+
+		}
+	}
+
+	#Header {
+		margin: 0;
+		padding: 10px 25px 0px 25px;
+		background-image:none;
+		background: linear-gradient(#424242 , #1B1B1B);
+		border: none;
+	}
+
+	#HeaderNav2{
+
+		float: left;
+	    padding-left: 30px;
+	    font-size: 18px;
+	    margin: 5px 0 0 0;
+	    line-height: 35px;
+	    padding-top: 7px;
+
+	}
+
+	.HorizontalNav li, .HorizontalNav li {
+	    zoom: 1;
+	    display: inline;
+	    padding: 0 0.35em 0 0.5em;
+	    margin: 0px;
+	}
+
+	#HeaderNav2 {
+	    margin: 5px 0 0 0;
+	    line-height: 35px;
+	    padding-top: 7px;
+	}
+
+	#HeaderImg {
+		max-height: 50px;
+	    max-width: 320px;
+	    clear: both;
+	    display: inline-block;
+	    height: auto;
+	}
+	
+
+#Header {
+    background: transparent; 
+	display: flex; 
+	padding: 0; 
+    padding-bottom: 25rem; 
+}
+
+#HeaderResponsive {
+    position: absolute; 
+	top: 8rem; 
+	margin: 0 4rem; 
+}
+
+#Header {
+	#HeaderNav1 {
+		width: 100%; 
+		text-align: right; 
+		background: #4d2a69;
+		position: absolute; 
+		top: 0; 
+		display: flex !important; 
+	justify-content: space-between; 
+		padding: 1rem 3rem 0 3rem; 
+		margin-top: 0; 
+
+		li.nyu-logo {
+			width: 16rem; 
+			height: auto; 
+			
+			a {
+				opacity: 1; 
+
+				img {
+					width: 100%; 
+					height: auto; 
+					margin-top: .5rem; 
+				}
+			}
+		}
+		
+		ul {
+			max-width: 144rem; 
+			margin: 0 auto; 
+			margin-right: 8rem; 
+	
+			li.UploadButton {
+				a {
+					color: $color-blue; 
+					background: white;
+					opacity: 0.7; 
+	
+					&:hover {
+						opacity: 1; 
+					}
+	
+					i {
+						color: $color-blue; 
+					}
+				}
+			}
+		}
+	}
+}
+
+
+#HeaderResponsive {
+	width: auto; 
+	height: auto; 
+
+	a {
+		height: auto; 
+
+		#HeaderImg {
+			max-height: 70px; 
+			width: auto; 
+		}
+	}
+}
+
+#HeaderNav2 {
+    position: absolute; 
+	top: 16rem; 
+	margin: 0 4rem; 
+    
+}

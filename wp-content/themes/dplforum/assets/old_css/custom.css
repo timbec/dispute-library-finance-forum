@@ -1,0 +1,27 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Hanlding Updates
+-----------------------------------------------------------------*/
+
+.standard-logo{
+    margin-top: 35px;
+    font-weight: bold;
+    display: block !important;
+    margin-bottom: 25px;
+}
+
+.top-advert{
+    font-size: 16px;
+}
+
+#page-title .container p{ margin: 0; }
+
+.category-6 #page-title h1{
+    color: yellow;
+}
+
+/* CSS WIDGETS */
+#wp-calendar{ width: 100%; }
+

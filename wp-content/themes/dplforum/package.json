@@ -1,0 +1,30 @@
+{
+  "name": "customtheme",
+  "version": "1.0.0",
+  "description": "Custom theme for buddypresss forum",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "node-sass assets/sass/main.scss assets/css/style.css -w",
+    "devserver": "live-server",
+    "start": "npm-run-all --parallel watch:sass",
+    "compile:sass": "node-sass assets/sass/main.scss assets/css/style.comp.css",
+    "concat:css": "concat -o assets/css/style.concat.css assets/css/icon-font.css css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' assets/css/style.concat.css -o css/style.prefix.css",
+    "compress:css": "node-sass assets/css/style.prefix.css css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass concat:css prefix:css compress:css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "concat": "^1.0.3",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
+    "postcss-cli": "^4.1.1"
+  },
+  "keywords": [
+    "forum",
+    "buddypress",
+    "wordpress"
+  ],
+  "author": "Tim Beckett",
+  "license": "ISC"
+}

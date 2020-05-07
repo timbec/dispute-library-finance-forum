@@ -1,0 +1,76 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Hanlding Updates
+-----------------------------------------------------------------*/
+
+/* From CCJ website: 
+ navy-blue (header): #4d2a69
+ deep-red (nav): #a91a38
+ heading-black: #1b1c1e
+ heading-blue: #57357b
+ heading-blue: hover: #815fb6
+
+ footer-black: #5c5c5c
+ footer-grey (blue background): #b0a0b9
+
+ reg-font-hover: #b69edc; 
+
+ heading-font: MiloWeb-Bold,arial,sans-serif, font-weight: 400
+ font: georgia, serif
+*/
+
+.standard-logo{
+    margin-top: 35px;
+    font-weight: bold;
+    display: block !important;
+    margin-bottom: 25px;
+}
+
+.top-advert{
+    font-size: 16px;
+}
+
+#page-title .container p{ margin: 0; }
+
+.category-6 #page-title h1{
+    color: yellow;
+}
+
+/* CSS WIDGETS */
+#wp-calendar{ width: 100%; }
+
+/**Menu**/
+#primary-menu ul li {
+    background: #a91a38; 
+    margin-right: 10px; 
+    margin-left: 2px; 
+    border: 1px solid #a91a38;
+}
+
+#primary-menu ul li a {
+    color: #fff; 
+    padding: 40px; 
+    padding-top: 6px !important; 
+    padding-bottom: 6px !important; 
+}
+
+#primary-menu ul li:hover {
+    background: #fff; 
+    border: 1px solid #a91a38;
+}
+
+#primary-menu ul li:hover > a {
+    color: #a91a38;
+}
+
+/* Header */
+#page-title {
+    background: #fff; 
+}
+
+/*Footer*/
+#copyrights {
+    background-color: #5c5c5c;
+}

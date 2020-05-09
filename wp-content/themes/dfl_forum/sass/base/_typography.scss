@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Telex&display=swap');
+
+body {
+    font-family: 'Lato', Arial, sans-serif;
+}
+
+p, a {
+    font-family: 'Lato', Arial, sans-serif;
+    text-decoration: none; 
+}
+
+a {
+    color: $color-blue; 
+}
+
+button, input {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+    margin: 5px;
+    padding: 0 22px;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    background-color: $color-red;
+    color: #FFF;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+

@@ -1,8 +1,85 @@
 
 #bbpress-forums {
 
+    max-width: 109rem; 
+
+    li {
+        font-size: 1.5rem; 
+    }
+
+    a {
+        font-size: 1.2rem; 
+        font-weight: normal; 
+    }
+
     li.bbp-header {
         background: $color-green; 
+        color: white; 
         opacity: 0.8; 
     }
+
+    .forum-titles {
+        color: white; 
+        font-size: 1.4rem; 
+        font-family: 'Trello', Arial, sans-serif;
+        text-transform: uppercase; 
+    }
+
+
+    // Forum Typography
+    .bbp-forum-title {
+        text-decoration: none;
+        color: $font-black; 
+        font-size: 1.6rem; 
+
+        &:hover {
+            color: $color-blue; 
+        }
+    }
+
+    li.bbp-body ul.forum, li.bbp-body ul.topic {
+        background-color: $color-beige; 
+    }
+
+    li.bbp-body ul.even {
+        background-color: white; 
+        border: 1px solid $color-beige; 
+    }
+
+    div.bbp-template-notice.info {
+        background-color: $color-light-purple; 
+    }
+
+    div.bbp-breadcrumb, div.bbp-topic-tags {
+        font-size: 1.6rem; 
+    }
+
+    div.odd, ul.odd {
+        background-color: $color-beige; 
+    }
+
+    #bbp_search {
+        background-color: white; 
+        border: 1px solid $color-blue; 
+    }
+
+    input {
+        font-size: 1.2rem; 
+        text-transform: lowercase; 
+        background-color: white; 
+        color: $font-black; 
+        border: 1px solid $font-black; 
+    }
+
+    input.button {
+        background-color: $color-red; 
+        color: white; 
+        border: 1px solid white; 
+    }
+
+
+}
+
+article.forum, article.topic {
+    margin-top: 4rem; 
 }

@@ -10,7 +10,6 @@
 get_header(); 
 
 ?>
-    <h4>front-page.php</h4>
     
     <div id="site-content" class="container">
         <main id="primary" class="site-main">

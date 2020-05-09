@@ -8,6 +8,11 @@
 		.site-title {
 			display: none; 
 		}
+
+		img {
+			height: 50px; 
+			width: auto; 
+		}
 	}
 	
 	&__topnav {
@@ -15,14 +20,89 @@
 		background-image:none;
 		background: $color-blue;
 		border: none;
-		padding: 10px 25px 0px 25px;
-		margin-bottom: 3rem; 
+		padding: 1rem 3rem 1rem 3rem;
+		margin-bottom: 2rem; 
+
+		.container {
+			display: flex; 
+			justify-content: space-between; 
+			max-width: 96%; 
+			margin-right: 4rem; 
+			margin-left: 0; 
+
+			@include respond('big-desktop') {
+				// max-width: 127rem; 
+			}
+
+			@include respond('huge-desktop') {
+				max-width: 167rem; 
+			}
+		}
+
+		&--nyulogo {
+			width: 16rem; 
+			height: auto; 
+
+			img {
+				max-width: 100%; 
+				height: 25px; 
+			}
+		}
+
+		li {
+			zoom: 1;
+			display: inline;
+			padding: 0 0.35em 0 0.5em;
+			margin: 0px;
+
+			a {
+				color: #fff;
+
+				.fa {
+					font-size: 2.4rem; 
+					margin-top: .5rem; 
+				}
+			}
+		}
+
+		.fa-user:before {
+			content: "\f007";
+		}
+
+		// User and Admin 
+		ul.user-buttons {
+			display: flex; 
+			width: 25rem; 
+			color: white; 
+
+			li {
+				display:flex; 
+				font-size: 1.6rem; 
+
+				h3 {
+					padding-top: .5rem; 
+				}
+
+				.log-out {
+					padding-bottom: .5rem; 
+
+					i {
+						margin-bottom: -.5rem; 
+					}
+				}
+			}
+		}
 	}
 
 	&__navigation {
 		display: flex; 
 		flex-direction: row; 
-		margin-top: 3rem; 
+		margin-top: 2rem; 
+		margin-left: 0; 
+		
+		position: absolute; 
+		top: 10rem; 
+		left: 25rem; 
 
 		ul {
 			display: flex; 
@@ -31,12 +111,23 @@
 
 			li {
 				background: $color-red;
-				font-size: 1.6rem;
 				line-height: 3.6rem;
+				padding: 0 0.5em 0 0.5em;
 				margin-right: .5rem;
 
+				@include respond('tab-port') {
+					width: 15.1rem; 
+				}
+
+				@include respond('big-desktop') {
+					width: 16.1rem; 
+				}
+
+				@include respond('huge-desktop') {
+					width: 17.1rem; 
+				}
+
 				a {
-					text-decoration: underline; 
 					color: #fff;
 					text-decoration: none;
 					text-transform: uppercase;
@@ -44,8 +135,10 @@
 					opacity: 1;
 					font-size: 1.3rem;
 					line-height: 1.5rem;
-					padding: 0.7rem 0 0.7rem 1.2rem;
+					font-family: 'Telex', Arial, sans-serif;
 					margin: 0 1rem 0 0;
+					padding: 0.7rem 0 0.7rem 1.2rem;
+					display: block;
 				}
 			}
 		}

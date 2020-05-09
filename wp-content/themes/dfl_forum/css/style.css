@@ -26,6 +26,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Telex&display=swap");
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%; }
@@ -319,8 +320,37 @@ html {
 
 .container {
   width: 100%;
-  max-width: 144rem;
-  margin: auto; }
+  margin: auto;
+  margin: 0 4rem; }
+
+body {
+  font-family: 'Lato', Arial, sans-serif; }
+
+p, a {
+  font-family: 'Lato', Arial, sans-serif;
+  text-decoration: none; }
+
+a {
+  color: #4d2a69; }
+
+button, input {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  margin: 5px;
+  padding: 0 22px;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #a91a38;
+  color: #FFF;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); }
 
 /* Login Styling */
 #login_box {
@@ -371,9 +401,61 @@ html {
   font-weight: bold;
   font-size: 1.5em !important; }
 
+<<<<<<< HEAD
 #bbpress-forums li.bbp-header {
   background: #5b7667;
   opacity: 0.8; }
+=======
+#bbpress-forums {
+  max-width: 109rem; }
+  #bbpress-forums li {
+    font-size: 1.5rem; }
+  #bbpress-forums a {
+    font-size: 1.2rem;
+    font-weight: normal; }
+  #bbpress-forums li.bbp-header {
+    background: #5b7667;
+    color: white;
+    opacity: 0.8; }
+  #bbpress-forums .forum-titles {
+    color: white;
+    font-size: 1.4rem;
+    font-family: 'Trello', Arial, sans-serif;
+    text-transform: uppercase; }
+  #bbpress-forums .bbp-forum-title {
+    text-decoration: none;
+    color: #1b1c1e;
+    font-size: 1.6rem; }
+    #bbpress-forums .bbp-forum-title:hover {
+      color: #4d2a69; }
+  #bbpress-forums li.bbp-body ul.forum, #bbpress-forums li.bbp-body ul.topic {
+    background-color: #f1efe7; }
+  #bbpress-forums li.bbp-body ul.even {
+    background-color: white;
+    border: 1px solid #f1efe7; }
+  #bbpress-forums div.bbp-template-notice.info {
+    background-color: #e1daeb; }
+  #bbpress-forums div.bbp-breadcrumb, #bbpress-forums div.bbp-topic-tags {
+    font-size: 1.6rem; }
+  #bbpress-forums div.odd, #bbpress-forums ul.odd {
+    background-color: #f1efe7; }
+  #bbpress-forums #bbp_search {
+    background-color: white;
+    border: 1px solid #4d2a69; }
+  #bbpress-forums input {
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    background-color: white;
+    color: #1b1c1e;
+    border: 1px solid #1b1c1e; }
+  #bbpress-forums input.button {
+    background-color: #a91a38;
+    color: white;
+    border: 1px solid white; }
+
+article.forum, article.topic {
+  margin-top: 4rem; }
+>>>>>>> update-styles
 
 .site-header {
   width: 100%;
@@ -381,28 +463,83 @@ html {
   flex-direction: column; }
   .site-header__logo .site-title {
     display: none; }
+  .site-header__logo img {
+    height: 50px;
+    width: auto; }
   .site-header__topnav {
     width: 100%;
     background-image: none;
     background: #4d2a69;
     border: none;
-    padding: 10px 25px 0px 25px;
-    margin-bottom: 3rem; }
+    padding: 1rem 3rem 1rem 3rem;
+    margin-bottom: 2rem; }
+    .site-header__topnav .container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 96%;
+      margin-right: 4rem;
+      margin-left: 0; }
+      @media only screen and (min-width: 112.5em) {
+        .site-header__topnav .container {
+          max-width: 167rem; } }
+    .site-header__topnav--nyulogo {
+      width: 16rem;
+      height: auto; }
+      .site-header__topnav--nyulogo img {
+        max-width: 100%;
+        height: 25px; }
+    .site-header__topnav li {
+      zoom: 1;
+      display: inline;
+      padding: 0 0.35em 0 0.5em;
+      margin: 0px; }
+      .site-header__topnav li a {
+        color: #fff; }
+        .site-header__topnav li a .fa {
+          font-size: 2.4rem;
+          margin-top: .5rem; }
+    .site-header__topnav .fa-user:before {
+      content: "\f007"; }
+    .site-header__topnav ul.user-buttons {
+      display: flex;
+      width: 25rem;
+      color: white; }
+      .site-header__topnav ul.user-buttons li {
+        display: flex;
+        font-size: 1.6rem; }
+        .site-header__topnav ul.user-buttons li h3 {
+          padding-top: .5rem; }
+        .site-header__topnav ul.user-buttons li .log-out {
+          padding-bottom: .5rem; }
+          .site-header__topnav ul.user-buttons li .log-out i {
+            margin-bottom: -.5rem; }
   .site-header__navigation {
     display: flex;
     flex-direction: row;
-    margin-top: 3rem; }
+    margin-top: 2rem;
+    margin-left: 0;
+    position: absolute;
+    top: 10rem;
+    left: 25rem; }
     .site-header__navigation ul {
       display: flex;
       width: 100%;
       list-style: none; }
       .site-header__navigation ul li {
         background: #a91a38;
-        font-size: 1.6rem;
         line-height: 3.6rem;
+        padding: 0 0.5em 0 0.5em;
         margin-right: .5rem; }
+        @media only screen and (max-width: 56.25em) {
+          .site-header__navigation ul li {
+            width: 15.1rem; } }
+        @media only screen and (min-width: 88.5em) {
+          .site-header__navigation ul li {
+            width: 16.1rem; } }
+        @media only screen and (min-width: 112.5em) {
+          .site-header__navigation ul li {
+            width: 17.1rem; } }
         .site-header__navigation ul li a {
-          text-decoration: underline;
           color: #fff;
           text-decoration: none;
           text-transform: uppercase;
@@ -410,8 +547,10 @@ html {
           opacity: 1;
           font-size: 1.3rem;
           line-height: 1.5rem;
+          font-family: 'Telex', Arial, sans-serif;
+          margin: 0 1rem 0 0;
           padding: 0.7rem 0 0.7rem 1.2rem;
-          margin: 0 1rem 0 0; }
+          display: block; }
   .site-header__submenu ul {
     display: flex; }
 
@@ -529,6 +668,12 @@ html {
 
 #CollectionDiv {
   background: #4d2a69; }
+
+.site-footer {
+  background: #4d2a69;
+  height: 5rem;
+  width: 100%;
+  margin-top: 10rem; }
 
 .HomeSiteTextInner {
   background: #a91a38; }

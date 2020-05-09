@@ -29,6 +29,7 @@ if($_SESSION) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	
+	<script src="https://kit.fontawesome.com/16401a0251.js" crossorigin="anonymous"></script>
 	<?php wp_head(); ?>
 </head>
 
@@ -45,10 +46,27 @@ if($_SESSION) {
 						<img src="<?php bloginfo( 'template_url' ); ?>/img/nyu-logo.svg" alt="">
 					</a>
 				</li>
+				<ul class="user-buttons">
+					<li>
+					<?php global $current_user; wp_get_current_user(); ?>
+						<?php if ( is_user_logged_in() ) { ?>
+						<a href="">
+							<i aria-hidden="true" class="fa fa-user fa-lg fa-fw"></i>
+						</a>
+						<h3><?php echo $current_user->display_name; ?></h3>
+					<?php } 
+						else { wp_loginout(); } ?>
+					</li>
+					<li>
+					<?php if ( is_user_logged_in() ) { ?>
 				
-				<li>
-					member name
-				</li>
+						<a href="<?php echo wp_logout_url(); ?>">
+						<i aria-hidden="true" class="fa fa-sign-out fa fw"></i>
+						Logout
+						</a>
+					<?php } ?>
+					</li>
+				</ul>
 			</ul>
 		</div>
 		<div class="container">
@@ -69,10 +87,10 @@ if($_SESSION) {
 
 			<nav id="site-navigation" class="site-header__navigation container">
 				<ul>
-					<li><a href="">Home</a></li>
+					<!-- <li><a href="">Home</a></li> -->
 					<li><a href="">Search Results</a></li>
 					<li><a href="">All Documents</a></li>
-					<li><a href="">My Collections</a></li>
+					<!-- <li><a href="">My Collections</a></li> -->
 					<li><a href="">Saved Search</a></li>
 					<li><a href="http://localhost:8888/dispute-finance-library/plugins/new_home_page/pages/acknowledgements.php">Acknowledgements</a></li>
 					<li><a href="">Forum</a></li>
@@ -83,12 +101,12 @@ if($_SESSION) {
 			</nav><!--.site-header__navigation -->
 			<nav class="site-header__submenu">
 			<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'Primary',
-						'menu_id'        => 'primary-menu',
-					)
-				);
+				// wp_nav_menu(
+				// 	array(
+				// 		'theme_location' => 'Primary',
+				// 		'menu_id'        => 'primary-menu',
+				// 	)
+				// );
 				?>
 			</nav>
 		</div><!--.container-->

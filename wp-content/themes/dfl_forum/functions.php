@@ -165,6 +165,16 @@ function dfl_forum_scripts() {
 add_action( 'wp_enqueue_scripts', 'dfl_forum_scripts' );
 
 /**
+ * Hide Top Menu Bar to all but Administrators
+ */
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin()) {
+	show_admin_bar(false);
+	}
+}
+add_action('after_setup_theme', 'remove_admin_bar');
+
+/**
  * Implement the Custom Header feature.
  */
 //require get_template_directory() . '/inc/custom-header.php';

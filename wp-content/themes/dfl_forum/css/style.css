@@ -494,6 +494,19 @@ article.forum, article.topic {
           margin-top: .5rem; }
     .site-header__topnav .fa-user:before {
       content: "\f007"; }
+    .site-header__topnav ul.user-buttons {
+      display: flex;
+      width: 25rem;
+      color: white; }
+      .site-header__topnav ul.user-buttons li {
+        display: flex;
+        font-size: 1.6rem; }
+        .site-header__topnav ul.user-buttons li h3 {
+          padding-top: .5rem; }
+        .site-header__topnav ul.user-buttons li .log-out {
+          padding-bottom: .5rem; }
+          .site-header__topnav ul.user-buttons li .log-out i {
+            margin-bottom: -.5rem; }
   .site-header__navigation {
     display: flex;
     flex-direction: row;
@@ -509,14 +522,17 @@ article.forum, article.topic {
       .site-header__navigation ul li {
         background: #a91a38;
         line-height: 3.6rem;
-        padding: 0 0.35em 0 0.5em;
+        padding: 0 0.5em 0 0.5em;
         margin-right: .5rem; }
         @media only screen and (max-width: 56.25em) {
           .site-header__navigation ul li {
-            width: 16.1rem; } }
+            width: 15.1rem; } }
         @media only screen and (min-width: 88.5em) {
           .site-header__navigation ul li {
-            width: 18.1rem; } }
+            width: 16.1rem; } }
+        @media only screen and (min-width: 112.5em) {
+          .site-header__navigation ul li {
+            width: 17.1rem; } }
         .site-header__navigation ul li a {
           color: #fff;
           text-decoration: none;

@@ -174,6 +174,13 @@ function remove_admin_bar() {
 }
 add_action('after_setup_theme', 'remove_admin_bar');
 
+
+/**
+ * Add Login Bar to top header
+ * 
+ */
+
+
 /**
  * Implement the Custom Header feature.
  */

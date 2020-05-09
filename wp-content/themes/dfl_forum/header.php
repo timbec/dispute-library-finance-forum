@@ -46,12 +46,27 @@ if($_SESSION) {
 						<img src="<?php bloginfo( 'template_url' ); ?>/img/nyu-logo.svg" alt="">
 					</a>
 				</li>
+				<ul class="user-buttons">
+					<li>
+					<?php global $current_user; wp_get_current_user(); ?>
+						<?php if ( is_user_logged_in() ) { ?>
+						<a href="">
+							<i aria-hidden="true" class="fa fa-user fa-lg fa-fw"></i>
+						</a>
+						<h3><?php echo $current_user->display_name; ?></h3>
+					<?php } 
+						else { wp_loginout(); } ?>
+					</li>
+					<li>
+					<?php if ( is_user_logged_in() ) { ?>
 				
-				<li>
-					<a href="">
-						<i aria-hidden="true" class="fa fa-user fa-lg fa-fw"></i>
-					</a>
-				</li>
+						<a href="<?php echo wp_logout_url(); ?>">
+						<i aria-hidden="true" class="fa fa-sign-out fa fw"></i>
+						Logout
+						</a>
+					<?php } ?>
+					</li>
+				</ul>
 			</ul>
 		</div>
 		<div class="container">

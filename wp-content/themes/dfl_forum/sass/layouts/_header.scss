@@ -68,6 +68,30 @@
 		.fa-user:before {
 			content: "\f007";
 		}
+
+		// User and Admin 
+		ul.user-buttons {
+			display: flex; 
+			width: 25rem; 
+			color: white; 
+
+			li {
+				display:flex; 
+				font-size: 1.6rem; 
+
+				h3 {
+					padding-top: .5rem; 
+				}
+
+				.log-out {
+					padding-bottom: .5rem; 
+
+					i {
+						margin-bottom: -.5rem; 
+					}
+				}
+			}
+		}
 	}
 
 	&__navigation {
@@ -88,15 +112,19 @@
 			li {
 				background: $color-red;
 				line-height: 3.6rem;
-				padding: 0 0.35em 0 0.5em;
+				padding: 0 0.5em 0 0.5em;
 				margin-right: .5rem;
 
 				@include respond('tab-port') {
-					width: 16.1rem; 
+					width: 15.1rem; 
 				}
 
 				@include respond('big-desktop') {
-					width: 18.1rem; 
+					width: 16.1rem; 
+				}
+
+				@include respond('huge-desktop') {
+					width: 17.1rem; 
 				}
 
 				a {

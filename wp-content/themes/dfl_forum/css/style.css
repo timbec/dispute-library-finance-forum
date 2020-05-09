@@ -372,7 +372,8 @@ html {
   font-size: 1.5em !important; }
 
 #bbpress-forums li.bbp-header {
-  background: #5b7667; }
+  background: #5b7667;
+  opacity: 0.8; }
 
 .site-header {
   width: 100%;

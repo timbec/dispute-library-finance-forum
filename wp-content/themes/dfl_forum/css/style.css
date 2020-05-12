@@ -401,11 +401,6 @@ button, input {
   font-weight: bold;
   font-size: 1.5em !important; }
 
-<<<<<<< HEAD
-#bbpress-forums li.bbp-header {
-  background: #5b7667;
-  opacity: 0.8; }
-=======
 #bbpress-forums {
   max-width: 109rem; }
   #bbpress-forums li {
@@ -455,7 +450,6 @@ button, input {
 
 article.forum, article.topic {
   margin-top: 4rem; }
->>>>>>> update-styles
 
 .site-header {
   width: 100%;

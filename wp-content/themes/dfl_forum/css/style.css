@@ -548,6 +548,35 @@ article.forum, article.topic {
   .site-header__submenu ul {
     display: flex; }
 
+/*******RESPONSIVE STYLES FOR HEADER AND NAV************/
+#site-navigation {
+  display: none; }
+
+/*Responsive Header*/
+.responsive-header-menu {
+  display: flex;
+  width: 25%;
+  justify-content: space-between;
+  position: absolute;
+  top: .5rem;
+  right: 0; }
+  .responsive-header-menu__button {
+    background: white;
+    height: 4rem;
+    display: inline-block;
+    line-height: 4rem;
+    text-align: center;
+    border-radius: .6rem;
+    vertical-align: top;
+    margin: 0;
+    padding: 0 2rem;
+    box-shadow: 1px 1px 8px -2px; }
+    .responsive-header-menu__button--text {
+      display: none; }
+    .responsive-header-menu__button i {
+      font-size: 1.5rem;
+      color: #4d2a69; }
+
 @media screen and (min-width: 769px) {
   /* How to styling */
   .how-to-content p {

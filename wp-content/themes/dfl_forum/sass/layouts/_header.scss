@@ -152,6 +152,49 @@
 	}
 }
 
+/*******RESPONSIVE STYLES FOR HEADER AND NAV************/ 
+#site-navigation {
+	display: none; 
+}
+
+/*Responsive Header*/ 
+.responsive-header-menu {
+	display: flex; 
+	width: 25%; 
+	justify-content: space-between; 
+	position: absolute; 
+
+	// Upper Menu 
+	top: .5rem; 
+	right: 0; 
+
+	//Lower Menu
+	// top: 7.5rem; 
+	// right: 0; 
+
+	&__button {
+		background: white; 
+		height: 4rem;
+		display: inline-block;
+		line-height: 4rem;
+		text-align: center;
+		border-radius: .6rem;
+		vertical-align: top;
+		margin: 0;
+		padding: 0 2rem; ;
+		box-shadow: 1px 1px 8px -2px;
+
+		&--text {
+			display: none; 
+		}
+
+		i {
+			font-size: 1.5rem; 
+			color: $color-blue; 
+		}
+	}
+}
+
 
 @media screen and (min-width: 769px ) {
 

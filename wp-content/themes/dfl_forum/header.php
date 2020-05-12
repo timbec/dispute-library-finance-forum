@@ -46,7 +46,25 @@ if($_SESSION) {
 						<img src="<?php bloginfo( 'template_url' ); ?>/img/nyu-logo.svg" alt="">
 					</a>
 				</li>
-				<ul class="user-buttons">
+
+				<!-- Upper Menu Bar Buttons -->
+				<li class="responsive-header-menu">
+				<button class="responsive-header-menu__button" id="nav-click-1">
+					<span class="responsive-header-menu__button--text">
+						Menu
+					</span>
+					<i class="fas fa-align-justify"></i>
+				</button>
+				<button class="responsive-header-menu__button" id="nav-click-2">
+					<span class="responsive-header-menu__button--text">
+						Account
+					</span>
+					<i aria-hidden="true" class="fa fa-user fa-lg fa-fw"></i>
+				</button>
+			</li>
+
+				
+				<!-- <ul class="user-buttons">
 					<li>
 					<?php global $current_user; wp_get_current_user(); ?>
 						<?php if ( is_user_logged_in() ) { ?>
@@ -67,7 +85,7 @@ if($_SESSION) {
 					<?php } ?>
 					</li>
 				</ul>
-			</ul>
+			</ul> -->
 		</div>
 		<div class="container">
 			<div class="site-header__logo">
@@ -84,6 +102,22 @@ if($_SESSION) {
 				endif; ?>
 
 			</div><!-- .site-header__logo -->
+
+			<!-- Responsive Header for Main Logo Bar -->
+			<!-- <div class="responsive-header-menu">
+				<button class="responsive-header-menu__button" id="nav-click-1">
+					<span class="responsive-header-menu__button--text">
+						Menu
+					</span>
+					<i class="fas fa-align-justify"></i>
+				</button>
+				<button class="responsive-header-menu__button" id="nav-click-2">
+					<span class="responsive-header-menu__button--text">
+						Account
+					</span>
+					<i aria-hidden="true" class="fa fa-user fa-lg fa-fw"></i>
+				</button>
+			</div> -->
 
 			<nav id="site-navigation" class="site-header__navigation container">
 				<ul>

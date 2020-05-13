@@ -1,32 +1,14 @@
 
+const $ = jQuery.noConflict();
 
-// const forumContainer = document.querySelector('.bp-nouveau'); 
-// const forumLinks = forumContainer.querySelectorAll('a');
+console.log($); 
 
-// const $ = jQuery; 
+const dropDownMenu = document.querySelector('.dropdown-menu'); 
+const dropDownMenuBtn = document.getElementById('nav-click-1'); 
 
+function showDropDownMenu() {
+    alert('showDropDownMenu called'); 
+    dropDownMenu.classList.add('show');
+}
 
-// console.log('Location: ' + location);
-// if(forumLinks) {
-//     forumLinks.forEach(link => {
-//         // link.addEventListener('click', NoReload);
-//         link.addEventListener('click', AjaxExp)
-//     });
-// }
-
-// function AjaxExp(e) {
-//     console.log(e); 
-//     e.preventDefault(); 
-
-//     alert(this);
-    
-    
-// }
-
-// $(document).ready(function() { /// Wait till page is loaded
-//     $('#detailed').click(function(){
-//        $('#main').load('property-detailed.php #main', function() {
-//             /// can add another function here
-//        });
-//     });
-//  });
+dropDownMenuBtn.addEventListener('click', showDropDownMenu); 

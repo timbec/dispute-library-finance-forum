@@ -62,6 +62,18 @@ if($_SESSION) {
 					<i aria-hidden="true" class="fa fa-user fa-lg fa-fw"></i>
 				</button>
 			</li>
+			<ul class="dropdown-menu">
+				<li class="dropdown-menu__item">Home</li>
+				<li class="dropdown-menu__item">Recently Added</li>
+				<li class="dropdown-menu__item">All Documents</li>
+				<li class="dropdown-menu__item">My Collections</li>
+				<li class="dropdown-menu__item">Acknowledgements</li>
+				<li class="dropdown-menu__item">Forum</li>
+				<li class="dropdown-menu__item">Contact Us</li>
+				<li class="dropdown-menu__item">Forum</li>
+				<li class="dropdown-menu__item">Volunteer</li>
+			</ul>
+		
 
 				
 				<ul class="user-buttons">

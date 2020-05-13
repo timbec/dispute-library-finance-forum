@@ -404,6 +404,93 @@ button, input {
   font-weight: bold;
   font-size: 1.5em !important; }
 
+/*Responsive Header*/
+.responsive-header-menu {
+  display: none;
+  width: auto;
+  position: absolute;
+  top: .5rem;
+  right: 0; }
+  @media only screen and (max-width: 35.8em) {
+    .responsive-header-menu {
+      display: flex; } }
+  @media only screen and (max-width: 75em) {
+    .responsive-header-menu {
+      display: flex; } }
+  @media only screen and (max-width: 56.25em) {
+    .responsive-header-menu {
+      right: 1rem; } }
+  @media only screen and (max-width: 75em) {
+    .responsive-header-menu {
+      width: 55%; } }
+  .responsive-header-menu__button {
+    background: white;
+    height: 4rem;
+    display: inline-block;
+    line-height: 4rem;
+    text-align: center;
+    border-radius: .6rem;
+    vertical-align: top;
+    margin: 0;
+    padding: 0 2rem;
+    margin-left: .5rem;
+    box-shadow: 1px 1px 8px -2px; }
+    .responsive-header-menu__button--text {
+      display: none; }
+    .responsive-header-menu__button i {
+      font-size: 1.5rem;
+      color: #4d2a69; }
+    @media only screen and (max-width: 35.8em) {
+      .responsive-header-menu__button {
+        width: 5rem; } }
+    @media only screen and (max-width: 75em) {
+      .responsive-header-menu__button {
+        width: 35%; } }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 5rem;
+  z-index: 10; }
+  .dropdown-menu.show {
+    display: block; }
+  @media only screen and (max-width: 35.8em) {
+    .dropdown-menu {
+      width: 100%;
+      flex-direction: column; } }
+  @media only screen and (max-width: 56.25em) {
+    .dropdown-menu {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap; } }
+  .dropdown-menu__item {
+    color: #1b1c1e;
+    text-align: center;
+    background: #e1daeb;
+    border: 1px solid white;
+    height: 45px;
+    line-height: 45px;
+    min-width: 95px;
+    padding: 0 5px;
+    border-radius: 6px;
+    margin-bottom: 5px; }
+    @media only screen and (max-width: 35.8em) {
+      .dropdown-menu__item {
+        display: inline-block;
+        text-align: center;
+        height: 45px;
+        line-height: 45px;
+        min-width: 95px;
+        width: 100%;
+        padding: 0 5px;
+        border-radius: 6px;
+        margin-bottom: 5px; } }
+
+@media screen and (min-width: 769px) {
+  /* How to styling */
+  .how-to-content p {
+    font-size: 20px; } }
+
 #bbpress-forums {
   margin-left: 2rem; }
   @media only screen and (max-width: 75em) {
@@ -593,54 +680,9 @@ article.forum, article.topic {
     #site-navigation {
       display: none; } }
 
-/*Responsive Header*/
-.responsive-header-menu {
-  display: none;
-  width: auto;
-  position: absolute;
-  top: .5rem;
-  right: 0; }
-  @media only screen and (max-width: 35.8em) {
-    .responsive-header-menu {
-      display: flex; } }
-  @media only screen and (max-width: 75em) {
-    .responsive-header-menu {
-      display: flex; } }
-  @media only screen and (max-width: 56.25em) {
-    .responsive-header-menu {
-      right: 1rem; } }
-  @media only screen and (max-width: 75em) {
-    .responsive-header-menu {
-      width: 55%; } }
-  .responsive-header-menu__button {
-    background: white;
-    height: 4rem;
-    display: inline-block;
-    line-height: 4rem;
-    text-align: center;
-    border-radius: .6rem;
-    vertical-align: top;
-    margin: 0;
-    padding: 0 2rem;
-    margin-left: .5rem;
-    box-shadow: 1px 1px 8px -2px; }
-    .responsive-header-menu__button--text {
-      display: none; }
-    .responsive-header-menu__button i {
-      font-size: 1.5rem;
-      color: #4d2a69; }
-    @media only screen and (max-width: 35.8em) {
-      .responsive-header-menu__button {
-        width: 5rem; } }
-    @media only screen and (max-width: 75em) {
-      .responsive-header-menu__button {
-        width: 35%; } }
-
-@media screen and (min-width: 769px) {
-  /* How to styling */
-  .how-to-content p {
-    font-size: 20px; } }
-
+/*///////////////////////////// 
+	STYLES LEFT OVER FROM
+/////////////////////////////*/
 /* Home page styling */
 #SearchBarContainer {
   margin-top: 4.25% !important; }

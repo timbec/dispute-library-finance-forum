@@ -1,0 +1,124 @@
+/*Responsive Header*/ 
+.responsive-header-menu {
+	display: none; 
+	width: auto; 
+	position: absolute; 
+
+	@include respond('phone') {
+		display: flex; 
+	}
+
+	@include respond('tab-land') {
+		display: flex; 
+	}
+
+	// Upper Menu 
+	top: .5rem; 
+	right: 0; 
+
+	@include respond('tab-port') {
+		right: 1rem; 
+	}
+
+	@include respond('tab-land') {
+		width: 55%; 
+	}
+
+	//Lower Menu
+	// top: 7.5rem; 
+	// right: 0; 
+
+	&__button {
+		background: white; 
+		height: 4rem;
+		display: inline-block;
+		line-height: 4rem;
+		text-align: center;
+		border-radius: .6rem;
+		vertical-align: top;
+		margin: 0;
+		padding: 0 2rem; 
+		margin-left: .5rem; 
+		box-shadow: 1px 1px 8px -2px;
+
+		&--text {
+			display: none; 
+		}
+
+		i {
+			font-size: 1.5rem; 
+			color: $color-blue; 
+		}
+
+		@include respond('phone') {
+			width: 5rem; 
+		}
+
+		@include respond('tab-land') {
+			width: 35%; //original from RS default
+		}
+	}
+}
+
+.dropdown-menu {
+    display: none; 
+    position: absolute; 
+    top: 5rem; 
+    z-index: 10; 
+
+    &.show {
+        display: block; 
+    }
+
+    @include respond('phone') {
+        width: 100%; 
+        flex-direction: column; 
+    }
+
+    @include respond('tab-port') {
+        width: 100%; 
+        flex-direction: row; 
+        flex-wrap: wrap;
+    }
+    
+    &__item {
+        color: $font-black;
+        text-align: center;
+        background: $color-light-purple;
+        border: 1px solid white;
+        height: 45px;
+        line-height: 45px;
+        min-width: 95px;
+        padding: 0 5px;
+        border-radius: 6px;
+        margin-bottom: 5px;
+
+        @include respond('phone') {
+            display: inline-block;
+            text-align: center;
+            height: 45px;
+            line-height: 45px;
+            min-width: 95px;
+            width: 100%; 
+            padding: 0 5px;
+            border-radius: 6px;
+            margin-bottom: 5px;
+        }
+
+        @include respond('tab-land') {
+            
+        }
+
+    }
+}
+
+
+@media screen and (min-width: 769px ) {
+
+
+	/* How to styling */
+
+	.how-to-content p {
+		font-size: 20px;
+	}
+}

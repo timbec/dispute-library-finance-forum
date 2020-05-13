@@ -1,10 +1,10 @@
 
 
-#UICenter::-webkit-scrollbar {
-    background-color: $color-red; 
-    width: 10px; 
-    opacity: 0.4; 
-}
+// #UICenter::-webkit-scrollbar {
+//     background-color: $color-red; 
+//     width: 10px; 
+//     opacity: 0.4; 
+// }
 
 .main-content {
     width: 90rem; 
@@ -13,4 +13,17 @@
 /**Might need to revert this if creates problems later**/
 .ui-layout-pane {
     overflow: scroll; 
+}
+
+#site-content {
+    margin: 0 1rem; 
+}
+
+.entry-header {
+    display: none; 
+     h1 {
+        //  font-size: 2rem;
+        //  text-align: center;  
+        //  margin: 5rem 0; 
+     }
 }

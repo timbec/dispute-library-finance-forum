@@ -64,7 +64,7 @@ if($_SESSION) {
 			</li>
 
 				
-				<!-- <ul class="user-buttons">
+				<ul class="user-buttons">
 					<li>
 					<?php global $current_user; wp_get_current_user(); ?>
 						<?php if ( is_user_logged_in() ) { ?>
@@ -85,7 +85,7 @@ if($_SESSION) {
 					<?php } ?>
 					</li>
 				</ul>
-			</ul> -->
+			</ul>
 		</div>
 		<div class="container">
 			<div class="site-header__logo">
@@ -121,7 +121,7 @@ if($_SESSION) {
 
 			<nav id="site-navigation" class="site-header__navigation container">
 				<ul>
-					<!-- <li><a href="">Home</a></li> -->
+					<li><a href="">Home</a></li>
 					<li><a href="">Search Results</a></li>
 					<li><a href="">All Documents</a></li>
 					<!-- <li><a href="">My Collections</a></li> -->

@@ -1,7 +1,12 @@
 
 #bbpress-forums {
 
-    max-width: 109rem; 
+    // max-width: 109rem;
+    margin-left: 2rem;
+
+    @include respond('tab-land') {
+        margin-left: 0; 
+    }
 
     li {
         font-size: 1.5rem; 
@@ -12,10 +17,38 @@
         font-weight: normal; 
     }
 
+    div.bbp-search-form {
+        float: right; 
+
+        // @include respond('tab-land') {
+        //     float: left; 
+        // }
+    }
+
+    // .bbp-breadcrumb, .bbp-template-notice, .bbp-template-notice, .bbp-pagination {
+
+    //     @include respond('tab-land') {
+    //         margin: 0 4rem; 
+    //     }
+    // }
+
+    div.bbp-breadcrumb, div.bbp-topic-tags {
+        
+        font-size: 2.4rem; 
+
+        a {
+            font-size: 1.6rem; 
+        }
+    }
+
     li.bbp-header {
         background: $color-green; 
         color: white; 
         opacity: 0.8; 
+    }
+
+    #subscription-toggle, #bbpress-forums #favorite-toggle {
+        margin-right: .5rem; 
     }
 
     .forum-titles {
@@ -23,6 +56,34 @@
         font-size: 1.4rem; 
         font-family: 'Trello', Arial, sans-serif;
         text-transform: uppercase; 
+    }
+
+    .bbp-forum-info, .bbp-topic-title {
+        
+        @include respond('tab-land') {
+            width: 46%; 
+        }
+    }
+
+    .bbp-forum-topic-count, .bbp-topic-voice-count {
+        
+        @include respond('tab-land') {
+            width: 14%; 
+        }
+    }
+
+    .bbp-forum-reply-count, .bbp-topic-reply-count {
+        
+        @include respond('tab-land') {
+            width: 14%; 
+        }
+    }
+
+    .bbp-forum-freshness, .bbp-topic-freshness {
+        
+        @include respond('tab-land') {
+            width: 23%; 
+        }
     }
 
 

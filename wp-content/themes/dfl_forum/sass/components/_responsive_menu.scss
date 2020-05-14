@@ -68,6 +68,10 @@
 
     &.show {
         display: block; 
+	}
+	
+	&.hide {
+        display: none; 
     }
 
     @include respond('phone') {

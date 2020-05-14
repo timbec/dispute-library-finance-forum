@@ -4,7 +4,10 @@
 	flex-direction: column; 
 
 	.container {
-		margin: 0 3rem; 
+
+		@include respond('tab-land') {
+			margin: 0 1rem; 
+		}
 	}
 
 	&__logo {
@@ -118,19 +121,22 @@
 		margin-left: 0; 
 		
 		position: absolute; 
-		top: 10rem; 
-		left: 25rem; 
+		top: 5.5rem; 
+		left: 30rem; 
 
 		ul {
 			display: flex; 
 			width: 100%; 
 			list-style: none; 
 
-			li {
+			li.menu-item {
 				background: $color-red;
 				line-height: 3.6rem;
+				height: auto;
 				padding: 0 0.5em 0 0.5em;
 				margin-right: .5rem;
+				border: 0;
+				border-radius: 0; 
 
 				@include respond('tab-port') {
 					width: 15.1rem; 
@@ -161,12 +167,12 @@
 		}
 	}
 
-	&__submenu {
+	// &__submenu {
 		
-		ul {
-			display: flex; 
-		}
-	}
+	// 	ul {
+	// 		display: flex; 
+	// 	}
+	// }
 }
 
 /*******RESPONSIVE STYLES FOR HEADER AND NAV************/ 

@@ -3,25 +3,25 @@
 	display: none; 
 	width: auto; 
 	position: absolute; 
-
-	@include respond('phone') {
-		display: flex; 
-	}
-
-	@include respond('tab-land') {
-		display: flex; 
-	}
+	padding: 1rem 0; 
 
 	// Upper Menu 
 	top: .5rem; 
 	right: 0; 
 
+	@include respond('tab-land') {
+		display: flex; 
+		width: 55%; 
+		justify-content: flex-end; 
+	}
+
 	@include respond('tab-port') {
 		right: 1rem; 
 	}
 
-	@include respond('tab-land') {
-		width: 55%; 
+	@include respond('phone') {
+		display: flex; 
+		width: 25%; 
 	}
 
 	//Lower Menu
@@ -50,63 +50,89 @@
 			color: $color-blue; 
 		}
 
-		@include respond('phone') {
-			width: 5rem; 
-		}
-
 		@include respond('tab-land') {
 			width: 35%; //original from RS default
+		}
+
+		@include respond('phone') {
+			width: 5rem; 
 		}
 	}
 }
 
-.dropdown-menu {
+ul.menu {
     display: none; 
-    position: absolute; 
-    top: 5rem; 
-    z-index: 10; 
 
     &.show {
-        display: block; 
+        display: flex; 
 	}
-	
+
 	&.hide {
-        display: none; 
-    }
+		display: none; 
+	}
 
-    @include respond('phone') {
-        width: 100%; 
-        flex-direction: column; 
-    }
+}
 
-    @include respond('tab-port') {
+.dropdown-user-info {
+	
+	display: none; 
+
+	&.show {
+		display: block; 
+	}
+
+	&.hide {
+		display: none; 
+	}
+
+	.menu {
+		flex-direction: flex; 
+		justify-content: flex-end; 
+	}
+}
+
+.menu {
+	position: absolute; 
+	top: 5rem; 
+	z-index: 10; 
+	list-style: none; 
+	display: flex; 
+
+    @include respond('tab-land') {
         width: 100%; 
-        flex-direction: row; 
-        flex-wrap: wrap;
+		flex-direction: row; 
+		justify-content: flex-end; 
+		flex-wrap: wrap;
+		right: 0; 
+	}
+
+	@include respond('phone') {
+        width: 100%; 
+		flex-direction: column; 
+		left: 0; 
     }
     
-    &__item {
-        color: $font-black;
+    .menu-item {
+        color: white;
         text-align: center;
-        background: $color-light-purple;
-        border: 1px solid white;
-        height: 45px;
-        line-height: 45px;
-        min-width: 95px;
-        padding: 0 5px;
-        border-radius: 6px;
-        margin-bottom: 5px;
+        background: $color-blue;
+        border: 1px solid $color-light-purple;
+        height: 4.5rem;
+        line-height: 4.5rem;
+        min-width: 9.5rem;
+        padding: 0 .5rem;
+        border-radius: .6rem;
 
         @include respond('phone') {
             display: inline-block;
             text-align: center;
-            height: 45px;
-            line-height: 45px;
-            min-width: 95px;
+            height: 4.5rem;
+            line-height: 4.5rem;
+            min-width: 9.5rem;
             width: 100%; 
-            padding: 0 5px;
-            border-radius: 6px;
-            margin-bottom: 5px;
+            padding: 0 .5rem;
+            border-radius: .6rem;
+            margin-bottom: .1rem;
         }
 
         @include respond('tab-land') {

@@ -63,15 +63,26 @@ if($_SESSION) {
 				</button>
 			</li>
 			<ul class="dropdown-menu">
-				<li class="dropdown-menu__item">Home</li>
-				<li class="dropdown-menu__item">Recently Added</li>
-				<li class="dropdown-menu__item">All Documents</li>
-				<li class="dropdown-menu__item">My Collections</li>
-				<li class="dropdown-menu__item">Acknowledgements</li>
-				<li class="dropdown-menu__item">Forum</li>
-				<li class="dropdown-menu__item">Contact Us</li>
-				<li class="dropdown-menu__item">Forum</li>
-				<li class="dropdown-menu__item">Volunteer</li>
+			<?php
+
+			if( has_nav_menu( 'menu-1' ) ){
+				wp_nav_menu([
+					'theme_location'        =>  'menu-1',
+					'container'             =>  false,
+					'fallback_cb'           =>  false,
+					'depth'                 =>  1
+				]);
+			}
+
+			?>
+				
+			</ul>
+
+			<ul class="dropdown-user-info">
+				<div class="menu">
+					<li class="menu-item">User Name</li>
+					<li class="menu-item">Log Out</li>
+				</div>
 			</ul>
 		
 
@@ -115,45 +126,36 @@ if($_SESSION) {
 
 			</div><!-- .site-header__logo -->
 
-			<!-- Responsive Header for Main Logo Bar -->
-			<!-- <div class="responsive-header-menu">
-				<button class="responsive-header-menu__button" id="nav-click-1">
-					<span class="responsive-header-menu__button--text">
-						Menu
-					</span>
-					<i class="fas fa-align-justify"></i>
-				</button>
-				<button class="responsive-header-menu__button" id="nav-click-2">
-					<span class="responsive-header-menu__button--text">
-						Account
-					</span>
-					<i aria-hidden="true" class="fa fa-user fa-lg fa-fw"></i>
-				</button>
-			</div> -->
-
 			<nav id="site-navigation" class="site-header__navigation container">
-				<ul>
-					<li><a href="">Home</a></li>
-					<li><a href="">Search Results</a></li>
-					<li><a href="">All Documents</a></li>
-					<!-- <li><a href="">My Collections</a></li> -->
-					<li><a href="">Saved Search</a></li>
-					<li><a href="http://localhost:8888/dispute-finance-library/plugins/new_home_page/pages/acknowledgements.php">Acknowledgements</a></li>
-					<li><a href="">Forum</a></li>
-					<li><a href="http://localhost:8888/dispute-finance-library/plugins/new_home_page/pages/contactus.php">Contact Us</a></li>
-					<li><a href="http://localhost:8888/dispute-finance-library/plugins/new_home_page/pages/volunteer.php">Volunteer</a></li>
-				</ul>
+				<?php
+
+					if( has_nav_menu( 'menu-1' ) ){
+						wp_nav_menu([
+							'theme_location'        =>  'menu-1',
+							'container'             =>  false,
+							'fallback_cb'           =>  false,
+							'depth'                 =>  1,
+							// 'walker'                =>  new JU_Custom_Nav_Walker()
+						]);
+					}
+
+				?>
 				
 			</nav><!--.site-header__navigation -->
 			<nav class="site-header__submenu">
 			<?php
-				// wp_nav_menu(
-				// 	array(
-				// 		'theme_location' => 'Primary',
-				// 		'menu_id'        => 'primary-menu',
-				// 	)
-				// );
-				?>
+
+				if( has_nav_menu( 'menu-1' ) ){
+					wp_nav_menu([
+						'theme_location'        =>  'menu-1',
+						'container'             =>  false,
+						'fallback_cb'           =>  false,
+						'depth'                 =>  1,
+						// 'walker'                =>  new JU_Custom_Nav_Walker()
+					]);
+				}
+
+			?>
 			</nav>
 		</div><!--.container-->
 	</header><!--.site-header-->

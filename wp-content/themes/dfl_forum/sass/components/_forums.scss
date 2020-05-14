@@ -2,9 +2,11 @@
 #bbpress-forums {
 
     // max-width: 109rem;
+    margin-top: 10rem; 
     margin-left: 2rem;
 
     @include respond('tab-land') {
+        margin-top: 5rem; 
         margin-left: 0; 
     }
 
@@ -15,6 +17,14 @@
     a {
         font-size: 1.2rem; 
         font-weight: normal; 
+    }
+
+    div.bbp-pagination {
+        width: 62%;
+
+        @include respond('phone') {
+            width: 100%; 
+        }
     }
 
     div.bbp-search-form {

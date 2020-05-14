@@ -29,10 +29,10 @@ html {
 }
 
 .container {
-    width: 100%; 
+    width: 96%; 
     // max-width: 155rem; 
-    margin: auto; 
-    margin: 0 4rem; 
+    margin: 0 auto; 
+    // margin: 0 4rem; 
 
     @include respond('tab-port') {
         margin: 0 1rem; 

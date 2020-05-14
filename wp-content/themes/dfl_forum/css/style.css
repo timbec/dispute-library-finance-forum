@@ -319,9 +319,8 @@ html {
   flex-direction: column; }
 
 .container {
-  width: 100%;
-  margin: auto;
-  margin: 0 4rem; }
+  width: 96%;
+  margin: 0 auto; }
   @media only screen and (max-width: 56.25em) {
     .container {
       margin: 0 1rem; } }
@@ -409,20 +408,21 @@ button, input {
   display: none;
   width: auto;
   position: absolute;
+  padding: 1rem 0;
   top: .5rem;
   right: 0; }
-  @media only screen and (max-width: 35.8em) {
-    .responsive-header-menu {
-      display: flex; } }
   @media only screen and (max-width: 75em) {
     .responsive-header-menu {
-      display: flex; } }
+      display: flex;
+      width: 55%;
+      justify-content: flex-end; } }
   @media only screen and (max-width: 56.25em) {
     .responsive-header-menu {
       right: 1rem; } }
-  @media only screen and (max-width: 75em) {
+  @media only screen and (max-width: 35.8em) {
     .responsive-header-menu {
-      width: 55%; } }
+      display: flex;
+      width: 25%; } }
   .responsive-header-menu__button {
     background: white;
     height: 4rem;
@@ -440,51 +440,69 @@ button, input {
     .responsive-header-menu__button i {
       font-size: 1.5rem;
       color: #4d2a69; }
-    @media only screen and (max-width: 35.8em) {
-      .responsive-header-menu__button {
-        width: 5rem; } }
     @media only screen and (max-width: 75em) {
       .responsive-header-menu__button {
         width: 35%; } }
+    @media only screen and (max-width: 35.8em) {
+      .responsive-header-menu__button {
+        width: 5rem; } }
 
-.dropdown-menu {
-  display: none;
+ul.menu {
+  display: none; }
+  ul.menu.show {
+    display: flex; }
+  ul.menu.hide {
+    display: none; }
+
+.dropdown-user-info {
+  display: none; }
+  .dropdown-user-info.show {
+    display: block; }
+  .dropdown-user-info.hide {
+    display: none; }
+  .dropdown-user-info .menu {
+    flex-direction: flex;
+    justify-content: flex-end; }
+
+.menu {
   position: absolute;
   top: 5rem;
-  z-index: 10; }
-  .dropdown-menu.show {
-    display: block; }
-  @media only screen and (max-width: 35.8em) {
-    .dropdown-menu {
-      width: 100%;
-      flex-direction: column; } }
-  @media only screen and (max-width: 56.25em) {
-    .dropdown-menu {
+  z-index: 10;
+  list-style: none;
+  display: flex; }
+  @media only screen and (max-width: 75em) {
+    .menu {
       width: 100%;
       flex-direction: row;
-      flex-wrap: wrap; } }
-  .dropdown-menu__item {
-    color: #1b1c1e;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      right: 0; } }
+  @media only screen and (max-width: 35.8em) {
+    .menu {
+      width: 100%;
+      flex-direction: column;
+      left: 0; } }
+  .menu .menu-item {
+    color: white;
     text-align: center;
-    background: #e1daeb;
-    border: 1px solid white;
-    height: 45px;
-    line-height: 45px;
-    min-width: 95px;
-    padding: 0 5px;
-    border-radius: 6px;
-    margin-bottom: 5px; }
+    background: #4d2a69;
+    border: 1px solid #e1daeb;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    min-width: 9.5rem;
+    padding: 0 .5rem;
+    border-radius: .6rem; }
     @media only screen and (max-width: 35.8em) {
-      .dropdown-menu__item {
+      .menu .menu-item {
         display: inline-block;
         text-align: center;
-        height: 45px;
-        line-height: 45px;
-        min-width: 95px;
+        height: 4.5rem;
+        line-height: 4.5rem;
+        min-width: 9.5rem;
         width: 100%;
-        padding: 0 5px;
-        border-radius: 6px;
-        margin-bottom: 5px; } }
+        padding: 0 .5rem;
+        border-radius: .6rem;
+        margin-bottom: .1rem; } }
 
 @media screen and (min-width: 769px) {
   /* How to styling */
@@ -492,15 +510,22 @@ button, input {
     font-size: 20px; } }
 
 #bbpress-forums {
+  margin-top: 10rem;
   margin-left: 2rem; }
   @media only screen and (max-width: 75em) {
     #bbpress-forums {
+      margin-top: 5rem;
       margin-left: 0; } }
   #bbpress-forums li {
     font-size: 1.5rem; }
   #bbpress-forums a {
     font-size: 1.2rem;
     font-weight: normal; }
+  #bbpress-forums div.bbp-pagination {
+    width: 62%; }
+    @media only screen and (max-width: 35.8em) {
+      #bbpress-forums div.bbp-pagination {
+        width: 100%; } }
   #bbpress-forums div.bbp-search-form {
     float: right; }
   #bbpress-forums div.bbp-breadcrumb, #bbpress-forums div.bbp-topic-tags {
@@ -568,8 +593,9 @@ article.forum, article.topic {
   width: 100%;
   display: flex;
   flex-direction: column; }
-  .site-header .container {
-    margin: 0 3rem; }
+  @media only screen and (max-width: 75em) {
+    .site-header .container {
+      margin: 0 1rem; } }
   .site-header__logo .site-title {
     display: none; }
   .site-header__logo img {
@@ -638,27 +664,30 @@ article.forum, article.topic {
     margin-top: 0rem;
     margin-left: 0;
     position: absolute;
-    top: 10rem;
-    left: 25rem; }
+    top: 5.5rem;
+    left: 30rem; }
     .site-header__navigation ul {
       display: flex;
       width: 100%;
       list-style: none; }
-      .site-header__navigation ul li {
+      .site-header__navigation ul li.menu-item {
         background: #a91a38;
         line-height: 3.6rem;
+        height: auto;
         padding: 0 0.5em 0 0.5em;
-        margin-right: .5rem; }
+        margin-right: .5rem;
+        border: 0;
+        border-radius: 0; }
         @media only screen and (max-width: 56.25em) {
-          .site-header__navigation ul li {
+          .site-header__navigation ul li.menu-item {
             width: 15.1rem; } }
         @media only screen and (min-width: 88.5em) {
-          .site-header__navigation ul li {
+          .site-header__navigation ul li.menu-item {
             width: 16.1rem; } }
         @media only screen and (min-width: 112.5em) {
-          .site-header__navigation ul li {
+          .site-header__navigation ul li.menu-item {
             width: 17.1rem; } }
-        .site-header__navigation ul li a {
+        .site-header__navigation ul li.menu-item a {
           color: #fff;
           text-decoration: none;
           text-transform: uppercase;
@@ -670,8 +699,6 @@ article.forum, article.topic {
           margin: 0 1rem 0 0;
           padding: 0.7rem 0 0.7rem 1rem;
           display: block; }
-  .site-header__submenu ul {
-    display: flex; }
 
 /*******RESPONSIVE STYLES FOR HEADER AND NAV************/
 #site-navigation {

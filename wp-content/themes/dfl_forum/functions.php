@@ -149,13 +149,6 @@ function dfl_forum_scripts() {
 	wp_enqueue_style( 'dfl_forum-style', get_stylesheet_directory_uri() . '/css/style.css' );
 	wp_style_add_data( 'dfl_forum-style', 'rtl', 'replace' );
 
-	// wp_enqueue_script( 'dfl_forum-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true );
-
-	// wp_enqueue_script( 'dfl-forum-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), _S_VERSION, true );
-
-	// wp_enqueue_script( 'dflforum-global-js', get_template_directory_uri() . '../../../../libs/js/global.js', array('jquery'), $theme_version, true );
-	// wp_script_add_data( 'dflforum-global-js', 'async', true );
-
 	wp_enqueue_script( 'dflforum-js', get_template_directory_uri() . '/js/scripts.js', array('jquery'), $theme_version, true );
 	wp_script_add_data( 'dflforum-js', 'async', true );
 
@@ -173,6 +166,8 @@ function remove_admin_bar() {
 	}
 }
 add_action('after_setup_theme', 'remove_admin_bar');
+
+show_admin_bar(false); 
 
 
 /**

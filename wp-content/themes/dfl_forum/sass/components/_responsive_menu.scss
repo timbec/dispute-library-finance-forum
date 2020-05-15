@@ -41,8 +41,24 @@
 		margin-left: .5rem; 
 		box-shadow: 1px 1px 8px -2px;
 
+		// For content
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+
 		&--text {
-			display: none; 
+			display: block; 
+			color: $font-black; 
+			text-transform: none; 
+			text-shadow: none; 
+			margin-right: 2rem; 
+
+			@include respond('phone') {
+				display: none; 
+			}
+
+
 		}
 
 		i {
@@ -113,15 +129,19 @@ ul.menu {
     }
     
     .menu-item {
-        color: white;
+        color: $color-blue;
         text-align: center;
-        background: $color-blue;
+        background: white;
         border: 1px solid $color-light-purple;
         height: 4.5rem;
         line-height: 4.5rem;
         min-width: 9.5rem;
         padding: 0 .5rem;
-        border-radius: .6rem;
+		border-radius: .6rem;
+		
+		a {
+			color: $color-blue; 
+		}
 
         @include respond('phone') {
             display: inline-block;
@@ -132,7 +152,7 @@ ul.menu {
             width: 100%; 
             padding: 0 .5rem;
             border-radius: .6rem;
-            margin-bottom: .1rem;
+			margin-bottom: .1rem;
         }
 
         @include respond('tab-land') {

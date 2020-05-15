@@ -65,30 +65,46 @@ if($_SESSION) {
 				</button>
 			</li>
 			<ul class="dropdown-menu">
-			<?php
-
-			if( has_nav_menu( 'menu-1' ) ){
-				wp_nav_menu([
-					'theme_location'        =>  'menu-1',
-					'container'             =>  false,
-					'fallback_cb'           =>  false,
-					'depth'                 =>  1
-				]);
-			}
-
-			?>
-				
+				<?php
+				if( has_nav_menu( 'menu-1' ) ){
+					wp_nav_menu([
+						'theme_location'        =>  'menu-1',
+						'container'             =>  false,
+						'fallback_cb'           =>  false,
+						'depth'                 =>  1
+					]);
+				}
+				?>
 			</ul>
 
 			<ul class="dropdown-user-info">
 				<div class="menu">
-					<li class="menu-item">User Name</li>
-					<li class="menu-item">Log Out</li>
-				</div>
-			</ul>
+						<li class="menu-item">
+						<?php global $current_user; wp_get_current_user(); ?>
+							<?php if ( is_user_logged_in() ) { ?>
+							<a href="">
+								<i aria-hidden="true" class="fa fa-user fa-lg fa-fw"></i>
+								<span class="user-name">
+									<?php echo $current_user->display_name; ?>
+								</span>
+							</a>
+						<?php } 
+							else { wp_loginout(); } ?>
+						</li>
+						<li class="menu-item">
+						<?php if ( is_user_logged_in() ) { ?>
+					
+							<a href="<?php echo wp_logout_url(); ?>">
+							<i aria-hidden="true" class="fa fa-sign-out fa fw"></i>
+							<span class="logout-text">Logout</span>
+							</a>
+						<?php } ?>
+						</li>
+					</div><!--.menu-->
+				</ul><!--.dropdown-user-info--> 
 		
 
-				
+				<!-- Make this an include -->
 				<ul class="user-buttons">
 					<li>
 					<?php global $current_user; wp_get_current_user(); ?>

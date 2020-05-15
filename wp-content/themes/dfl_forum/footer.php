@@ -15,6 +15,9 @@
 		
 	</footer><!-- #colophon -->
 </div><!-- #page -->
+    <!-- Go To Top
+    ============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
 
 <?php wp_footer(); ?>
 

@@ -210,7 +210,7 @@ var SEMICOLON = SEMICOLON || {};
 			if( !elementScrollSpeed ) { elementScrollSpeed = 700; }
 			if( !elementScrollEasing ) { elementScrollEasing = 'easeOutQuad'; }
 
-			$goToTopEl.click(function() {
+			$El.click(function() {
 				$('body,html').stop(true).animate({
 					'scrollTop': 0
 				}, Number( elementScrollSpeed ), elementScrollEasing );

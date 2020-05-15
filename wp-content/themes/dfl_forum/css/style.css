@@ -433,9 +433,20 @@ button, input {
     margin: 0;
     padding: 0 2rem;
     margin-left: .5rem;
-    box-shadow: 1px 1px 8px -2px; }
+    box-shadow: 1px 1px 8px -2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; }
     .responsive-header-menu__button--text {
-      display: none; }
+      display: block;
+      color: #1b1c1e;
+      text-transform: none;
+      text-shadow: none;
+      margin-right: 2rem; }
+      @media only screen and (max-width: 35.8em) {
+        .responsive-header-menu__button--text {
+          display: none; } }
     .responsive-header-menu__button i {
       font-size: 1.5rem;
       color: #4d2a69; }
@@ -482,15 +493,17 @@ ul.menu {
       flex-direction: column;
       left: 0; } }
   .menu .menu-item {
-    color: white;
+    color: #4d2a69;
     text-align: center;
-    background: #4d2a69;
+    background: white;
     border: 1px solid #e1daeb;
     height: 4.5rem;
     line-height: 4.5rem;
     min-width: 9.5rem;
     padding: 0 .5rem;
     border-radius: .6rem; }
+    .menu .menu-item a {
+      color: #4d2a69; }
     @media only screen and (max-width: 35.8em) {
       .menu .menu-item {
         display: inline-block;
@@ -616,7 +629,7 @@ article.forum, article.topic {
       justify-content: space-between;
       position: relative;
       max-width: 96%;
-      margin-right: 4rem;
+      margin-right: 3rem;
       margin-left: 3rem; }
       @media only screen and (max-width: 56.25em) {
         .site-header__topnav .container {

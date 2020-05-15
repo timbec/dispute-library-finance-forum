@@ -47,7 +47,9 @@ if($_SESSION) {
 					</a>
 				</li>
 
-				<!-- Upper Menu Bar Buttons -->
+				<!--+++++++++++++++++++
+				 Upper Menu Bar Buttons 
+				 ++++++++++++++++++++++ -->
 				<li class="responsive-header-menu">
 				<button class="responsive-header-menu__button" id="nav-click-1">
 					<span class="responsive-header-menu__button--text">
@@ -93,8 +95,10 @@ if($_SESSION) {
 						<?php if ( is_user_logged_in() ) { ?>
 						<a href="">
 							<i aria-hidden="true" class="fa fa-user fa-lg fa-fw"></i>
+							<span class="user-name">
+								<?php echo $current_user->display_name; ?>
+							</span>
 						</a>
-						<h3><?php echo $current_user->display_name; ?></h3>
 					<?php } 
 						else { wp_loginout(); } ?>
 					</li>
@@ -103,7 +107,7 @@ if($_SESSION) {
 				
 						<a href="<?php echo wp_logout_url(); ?>">
 						<i aria-hidden="true" class="fa fa-sign-out fa fw"></i>
-						Logout
+						<span class="logout-text">Logout</span>
 						</a>
 					<?php } ?>
 					</li>

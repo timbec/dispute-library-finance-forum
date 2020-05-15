@@ -1,9 +1,13 @@
 
+#forum-front {
+    // margin-left: 2rem; 
+}
+
 #bbpress-forums {
 
     // max-width: 109rem;
-    margin-top: 10rem; 
-    margin-left: 2rem;
+    margin-top: 6rem; 
+    // margin-left: 2rem;
 
     @include respond('tab-land') {
         margin-top: 5rem; 

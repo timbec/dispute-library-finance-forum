@@ -3,10 +3,10 @@
 	display: none; 
 	width: auto; 
 	position: absolute; 
-	padding: 1rem 0; 
+	// padding: 1rem 0; 
 
 	// Upper Menu 
-	top: .5rem; 
+	top: -.5rem; 
 	right: 0; 
 
 	@include respond('tab-land') {

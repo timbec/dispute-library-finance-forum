@@ -11,7 +11,7 @@ get_header();
 
 ?>
     
-    <div id="site-content" class="container">
+    <div id="site-content">
         <main id="primary" class="site-main">
         <?php do_action( 'bbp_before_main_content' ); ?>
 

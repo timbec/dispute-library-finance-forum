@@ -16,7 +16,11 @@
 }
 
 #site-content {
-    margin: 0 1rem; 
+    margin: 0 3rem; 
+
+    @include respond('tab-port') {
+        margin: 0 1rem;
+    }
 }
 
 .entry-header {

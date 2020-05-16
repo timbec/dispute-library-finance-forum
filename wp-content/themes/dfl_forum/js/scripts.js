@@ -28,6 +28,7 @@ dropDownUserBtn.addEventListener('click', toggleDropDownUser);
 
    /**
     * Scroll To Top
+    * TODO: Swap it out for this: more flexibility: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_scroll_to_top
     */
    $(window).scroll(function () {
     if ($(this).scrollTop() >= 50) {        //Need to change this so it shows up only if user stops scrolling or at bottom. 

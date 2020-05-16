@@ -538,17 +538,17 @@ ul.menu {
     border-radius: 35px;
     -moz-border-radius: 35px;
     -webkit-border-radius: 35px;
-    color: #4d2a69;
+    color: #a91a38;
     display: inline-block;
     font-weight: bold;
     margin-right: 5px;
     text-align: center;
     width: 50px;
     line-height: 50px;
-    border: 1px solid #4d2a69; }
+    border: 1px solid #a91a38; }
 
 #return-to-top:hover span {
-  background: #4d2a69;
+  background: #a91a38;
   color: white;
   opacity: 1;
   border-radius: 35px;
@@ -647,6 +647,7 @@ article.forum, article.topic {
   display: flex;
   flex-direction: column; }
   .site-header .container {
+    width: 96%;
     margin: 0 3rem; }
     @media only screen and (max-width: 35.8em) {
       .site-header .container {
@@ -672,7 +673,7 @@ article.forum, article.topic {
       position: relative;
       max-width: 96%;
       margin-right: 3rem;
-      margin-left: 3rem; }
+      margin-left: 0rem; }
       @media only screen and (max-width: 56.25em) {
         .site-header__topnav .container {
           max-width: 100%;
@@ -738,11 +739,11 @@ article.forum, article.topic {
           text-transform: uppercase;
           text-align: center;
           opacity: 1;
-          font-size: 1.2rem;
+          font-size: 1.15rem;
           line-height: 1.5rem;
           font-family: 'Telex', Arial, sans-serif;
-          margin: 0 1rem 0 0;
-          padding: 0.7rem 0 0.7rem 1rem;
+          margin: 0;
+          padding: 0.7rem 0.5rem;
           display: block; }
 
 /*******RESPONSIVE STYLES FOR HEADER AND NAV************/

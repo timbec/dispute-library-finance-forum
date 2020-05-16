@@ -15,20 +15,20 @@
       border-radius: 35px;
       -moz-border-radius: 35px;
       -webkit-border-radius: 35px;
-      color: $color-blue;
+      color: $color-red;
       display: inline-block;
       font-weight: bold;
       margin-right: 5px;
       text-align: center;
       width: 50px;
       line-height: 50px; 
-      border: 1px solid $color-blue; 
+      border: 1px solid $color-red; 
   }
 }
 
 #return-to-top:hover {
   span {
-    background: $color-blue; 
+    background: $color-red; 
     color: white; 
     opacity: 1; 
     border-radius: 35px;

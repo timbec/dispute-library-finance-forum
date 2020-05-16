@@ -29,16 +29,16 @@ dropDownUserBtn.addEventListener('click', toggleDropDownUser);
    /**
     * Scroll To Top
     */
-//    $(window).scroll(function () {
-//     if ($(this).scrollTop() >= 50) {        //Need to change this so it shows up only if user stops scrolling or at bottom. 
-//         $('#return-to-top').fadeIn(200);
-//     } else {
-//         $('#return-to-top').fadeOut(200);   // Else fade out the arrow
-//     }
-// });
+   $(window).scroll(function () {
+    if ($(this).scrollTop() >= 50) {        //Need to change this so it shows up only if user stops scrolling or at bottom. 
+        $('#return-to-top').fadeIn(200);
+    } else {
+        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+    }
+});
 
-// $('#return-to-top').click(function () {      // When arrow is clicked
-//     $('body,html').animate({
-//         scrollTop: 0                       // Scroll to top of body
-//     }, 500);
-// });
+$('#return-to-top').click(function () {      // When arrow is clicked
+    $('body,html').animate({
+        scrollTop: 0                       // Scroll to top of body
+    }, 500);
+});

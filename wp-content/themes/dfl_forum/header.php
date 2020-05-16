@@ -35,6 +35,14 @@ if($_SESSION) {
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+
+<!--Return To Top-->
+<a href="javascript:" id="return-to-top">
+	<span class="up-arrow">
+		&#8593;
+	</span>
+	</a>
+
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dfl_forum' ); ?></a>
 

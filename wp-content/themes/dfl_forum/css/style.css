@@ -521,6 +521,48 @@ ul.menu {
   .how-to-content p {
     font-size: 20px; } }
 
+#return-to-top {
+  position: fixed;
+  bottom: 8rem;
+  right: 44%;
+  left: 44%;
+  display: none;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  z-index: 10000; }
+  #return-to-top span {
+    background: white;
+    border-radius: 35px;
+    -moz-border-radius: 35px;
+    -webkit-border-radius: 35px;
+    color: #4d2a69;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 5px;
+    text-align: center;
+    width: 50px;
+    line-height: 50px;
+    border: 1px solid #4d2a69; }
+
+#return-to-top:hover span {
+  background: #4d2a69;
+  color: white;
+  opacity: 1;
+  border-radius: 35px;
+  -moz-border-radius: 35px;
+  -webkit-border-radius: 35px;
+  margin-right: 5px;
+  text-align: center;
+  width: 50px;
+  line-height: 50px; }
+
+#return-to-top:hover i {
+  color: #fff;
+  top: 5px; }
+
 #bbpress-forums {
   margin-top: 6rem; }
   @media only screen and (max-width: 75em) {

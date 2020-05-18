@@ -47,8 +47,14 @@ if($_SESSION) {
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dfl_forum' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner">
+		<div class="site-header__topnav">
+			<ul class="container">
+				<li class="site-header__topnav--nyulogo">
+					<a href="">
+						<img src="<?php bloginfo( 'template_url' ); ?>/img/nyu-logo.svg" alt="">
+					</a>
+				</li>
 
-	<div class="container">
 				<!--+++++++++++++++++++
 				 Upper Menu Bar Buttons 
 				 ++++++++++++++++++++++ -->
@@ -130,7 +136,9 @@ if($_SESSION) {
 					<?php } ?>
 					</li>
 				</ul>
-		
+			</ul>
+		</div>
+		<div class="container">
 			<div class="site-header__logo">
 				<?php
 				the_custom_logo();
@@ -162,7 +170,7 @@ if($_SESSION) {
 				?>
 				
 			</nav><!--.site-header__navigation -->
-			<!-- <nav class="site-header__submenu">
+			<nav class="site-header__submenu">
 			<?php
 
 				if( has_nav_menu( 'menu-1' ) ){
@@ -176,6 +184,6 @@ if($_SESSION) {
 				}
 
 			?>
-			</nav> -->
+			</nav>
 		</div><!--.container-->
 	</header><!--.site-header-->

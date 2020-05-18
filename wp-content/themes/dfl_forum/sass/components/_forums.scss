@@ -121,8 +121,18 @@
         border: 1px solid $color-beige; 
     }
 
-    div.bbp-template-notice.info {
-        background-color: $color-light-purple; 
+    div.bbp-template-notice {
+        // background-color: $color-light-purple; 
+        background-color: $color-blue; 
+        color: white; 
+
+        li {
+            color: white; 
+
+            a {
+                color: white; 
+            }
+        }
     }
 
     div.bbp-breadcrumb, div.bbp-topic-tags {

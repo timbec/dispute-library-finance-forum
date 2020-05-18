@@ -21,6 +21,13 @@
     @include respond('tab-port') {
         margin: 0 1rem;
     }
+
+    h1.entry-title {
+        float: left;
+        width: 20rem; 
+        margin-top: 6rem; 
+        margin-bottom: -4rem; 
+    }
 }
 
 .entry-header {

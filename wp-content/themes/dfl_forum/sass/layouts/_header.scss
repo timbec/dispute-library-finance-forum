@@ -55,13 +55,13 @@
 		// User and Admin 
 		ul.user-buttons {
 			position: absolute; 
-			top: 0; 
-			right: 0; 
+			top: 2rem; 
+			right: 15rem; 
 			display: flex; 
 			float: right; 
-			width: 18rem; 
+			width: auto; 
+			max-width: 24rem; 
 			color: $color-red; 
-			margin-top: 3rem; 
 
 			li {
 				display:flex; 

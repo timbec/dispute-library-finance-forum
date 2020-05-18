@@ -139,6 +139,7 @@ ul.menu {
 		
 		a {
 			color: $color-blue; 
+			font-size: 2rem; 
 		}
 
         @include respond('phone') {

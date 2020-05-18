@@ -501,7 +501,8 @@ ul.menu {
     padding: 0 .5rem;
     border-radius: .6rem; }
     .menu .menu-item a {
-      color: #4d2a69; }
+      color: #4d2a69;
+      font-size: 2rem; }
     @media only screen and (max-width: 35.8em) {
       .menu .menu-item {
         display: inline-block;
@@ -587,7 +588,7 @@ ul.menu {
     #bbpress-forums div.bbp-breadcrumb a, #bbpress-forums div.bbp-topic-tags a {
       font-size: 1.6rem; }
   #bbpress-forums li.bbp-header {
-    background: #5b7667;
+    background: #4d2a69;
     color: white;
     opacity: 0.8; }
   #bbpress-forums #subscription-toggle, #bbpress-forums #bbpress-forums #favorite-toggle {
@@ -679,13 +680,13 @@ article.forum, article.topic {
     content: "\f007"; }
   .site-header ul.user-buttons {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 2rem;
+    right: 15rem;
     display: flex;
     float: right;
-    width: 18rem;
-    color: #a91a38;
-    margin-top: 3rem; }
+    width: auto;
+    max-width: 24rem;
+    color: #a91a38; }
     .site-header ul.user-buttons li {
       display: flex;
       padding-top: .5rem; }

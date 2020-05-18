@@ -37,22 +37,39 @@ if($_SESSION) {
 <?php wp_body_open(); ?>
 
 <!--Return To Top-->
+<div class="return-to-top-container">
 <a href="javascript:" id="return-to-top">
 	<span class="up-arrow">
 		&#8593;
 	</span>
-	</a>
+</a>
+</div>
 
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dfl_forum' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner">
+		<div class="container">
+			<div class="site-header__logo">
+				<?php
+				the_custom_logo();
+				if ( is_front_page() && is_home() ) :
+					?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<?php
+				else :
+					?>
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+					<?php
+				endif; ?>
 
-	<div class="container">
-				<!--+++++++++++++++++++
+			</div><!-- .site-header__logo -->
+
+			<!--+++++++++++++++++++
 				 Upper Menu Bar Buttons 
 				 ++++++++++++++++++++++ -->
-				<li class="responsive-header-menu">
+			<ul class="responsive-menu-user-info">
+				 <li class="responsive-header-menu">
 				<button class="responsive-header-menu__button" id="nav-click-1">
 					<span class="responsive-header-menu__button--text">
 						Menu
@@ -130,21 +147,7 @@ if($_SESSION) {
 					<?php } ?>
 					</li>
 				</ul>
-		
-			<div class="site-header__logo">
-				<?php
-				the_custom_logo();
-				if ( is_front_page() && is_home() ) :
-					?>
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php
-				else :
-					?>
-					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-					<?php
-				endif; ?>
-
-			</div><!-- .site-header__logo -->
+			</ul>
 
 			<nav id="site-navigation" class="site-header__navigation container">
 				<?php
@@ -162,7 +165,7 @@ if($_SESSION) {
 				?>
 				
 			</nav><!--.site-header__navigation -->
-			<!-- <nav class="site-header__submenu">
+			<nav class="site-header__submenu">
 			<?php
 
 				if( has_nav_menu( 'menu-1' ) ){
@@ -176,6 +179,6 @@ if($_SESSION) {
 				}
 
 			?>
-			</nav> -->
+			</nav>
 		</div><!--.container-->
 	</header><!--.site-header-->

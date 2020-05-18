@@ -9,12 +9,19 @@
 	background: white; 
 
 	.container {
+		position: relative; 
 		width: 96%; 
 		margin: 0 3rem; 
 
 		@include respond('phone') {
 			margin: 0 1rem; 
 		}
+
+		// .responsive-menu-user-info {
+		// 	position: absolute; 
+		// 	top: 0; 
+		// 	right: 0; 
+		// }
 	}
 
 	&__logo {
@@ -47,9 +54,12 @@
 
 		// User and Admin 
 		ul.user-buttons {
+			position: absolute; 
+			top: 0; 
+			right: 0; 
 			display: flex; 
 			float: right; 
-			width: 22rem; 
+			width: 18rem; 
 			color: $color-red; 
 			margin-top: 3rem; 
 

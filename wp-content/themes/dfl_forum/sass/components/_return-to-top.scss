@@ -1,8 +1,14 @@
+.return-to-top-container {
+  width: 100%; 
+  display: flex; 
+  justify-content: center; 
+}
+
 #return-to-top {
     position: fixed;
     bottom: 8rem;
-    right: 44%;
-    left: 44%;
+    // right: 44%;
+    // left: 44%;
     display: none;
     -webkit-transition: all 0.3s linear;
     -moz-transition: all 0.3s;

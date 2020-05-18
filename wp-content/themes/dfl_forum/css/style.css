@@ -519,11 +519,14 @@ ul.menu {
   .how-to-content p {
     font-size: 20px; } }
 
+.return-to-top-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+
 #return-to-top {
   position: fixed;
   bottom: 8rem;
-  right: 44%;
-  left: 44%;
   display: none;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s;
@@ -653,6 +656,7 @@ article.forum, article.topic {
   background: #4d2a69;
   background: white; }
   .site-header .container {
+    position: relative;
     width: 96%;
     margin: 0 3rem; }
     @media only screen and (max-width: 35.8em) {
@@ -674,9 +678,12 @@ article.forum, article.topic {
   .site-header .fa-user:before {
     content: "\f007"; }
   .site-header ul.user-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
     display: flex;
     float: right;
-    width: 22rem;
+    width: 18rem;
     color: #a91a38;
     margin-top: 3rem; }
     .site-header ul.user-buttons li {

@@ -3,10 +3,7 @@
 	display: none; 
 	width: auto; 
 	position: absolute; 
-	// padding: 1rem 0; 
-
-	// Upper Menu 
-	top: -.5rem; 
+	top: 1rem; 
 	right: 0; 
 
 	@include respond('tab-land') {
@@ -16,17 +13,13 @@
 	}
 
 	@include respond('tab-port') {
-		right: 1rem; 
+		right: 5rem; 
 	}
 
 	@include respond('phone') {
 		display: flex; 
 		width: 25%; 
 	}
-
-	//Lower Menu
-	// top: 7.5rem; 
-	// right: 0; 
 
 	&__button {
 		background: white; 
@@ -35,10 +28,10 @@
 		line-height: 4rem;
 		text-align: center;
 		border-radius: .6rem;
-		vertical-align: top;
-		margin: 0;
+		color: $font-black; 
+		vertical-align: top; 
 		padding: 0 2rem; 
-		margin-left: .5rem; 
+		margin-right: .75rem; 
 		box-shadow: 1px 1px 8px -2px;
 
 		// For content
@@ -46,6 +39,14 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
+
+		@include respond('tab-land') {
+			line-height: 45px;
+			text-align: center;
+			padding: .2rem 1rem .7rem 1rem; 
+			border-radius: .6rem;
+			vertical-align: top;
+		}
 
 		&--text {
 			display: block; 
@@ -62,7 +63,7 @@
 		}
 
 		i {
-			font-size: 1.5rem; 
+			font-size: 2rem; 
 			color: $color-blue; 
 		}
 
@@ -107,39 +108,72 @@ ul.menu {
 	}
 }
 
+.dropdown-menu {
+	
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+	background: white;
+
+	@include respond('tab-land') {
+		left: -3rem; 
+	}
+
+	@include respond('tab-port') {
+		left: -4rem; 
+	}
+	
+	@include respond('phone') {
+		left: -5.5rem;
+	}
+}
+
 .menu {
 	z-index: 10; 
 	list-style: none; 
 	display: flex; 
+	margin-top: 2rem; 
 
     @include respond('tab-land') {
-        width: 100%; 
-		flex-direction: row; 
-		justify-content: flex-end; 
-		flex-wrap: wrap;
+        width: 96%; 
+		flex-direction: column; 
+		// justify-content: flex-end; 
+		// flex-wrap: wrap;
 		right: 0; 
+		margin: 2rem 2rem; 
 	}
 
 	@include respond('phone') {
-        width: 100%; 
+        width: 96%; 
 		flex-direction: column; 
 		left: 0; 
     }
     
     .menu-item {
-        color: $color-blue;
+        color: $font-black;
         text-align: center;
         background: white;
-        border: 1px solid $color-light-purple;
         height: 4.5rem;
-        line-height: 4.5rem;
-        min-width: 9.5rem;
-        padding: 0 .5rem;
+        // min-width: 9.5rem; 
 		border-radius: .6rem;
+		text-transform: uppercase;
+		opacity: 1;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-family: 'Telex', Arial, sans-serif;
+		display: flex; 
+		justify-content: center; 
+		align-items: center; 
+		margin: 0.2rem 0; 
+		border: 1px solid $color-red; 
+
+		@include respond('tab-land') {
+			box-shadow: 1px 1px 8px -2px;
+		}
 		
 		a {
 			color: $color-blue; 
-			font-size: 2rem; 
+			font-size: 1.15rem; 
 		}
 
         @include respond('phone') {
@@ -147,8 +181,6 @@ ul.menu {
             text-align: center;
             height: 4.5rem;
             line-height: 4.5rem;
-            min-width: 9.5rem;
-            width: 100%; 
             padding: 0 .5rem;
             border-radius: .6rem;
 			margin-bottom: .1rem;

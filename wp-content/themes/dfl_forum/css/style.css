@@ -291,12 +291,14 @@ template {
 
 /*Color Variables*/
 /*
-0 - 600px:      Phone
+0 - 400px:      Small Phone
+400px- 600px:   Phone
 600 - 900px:    Tablet portrait
 900 - 1200px:   Tablet landscape
 [1200 - 1800] is where our normal styles apply
 1800px + :      Big desktop
 $breakpoint arguement choices:
+- small-phone
 - phone
 - tab-port
 - tab-land
@@ -316,7 +318,11 @@ html {
 
 #page {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  position: relative; }
+  @media only screen and (max-width: 75em) {
+    #page {
+      margin: 0; } }
 
 .container {
   width: 100%;
@@ -408,7 +414,7 @@ button, input {
   display: none;
   width: auto;
   position: absolute;
-  top: -.5rem;
+  top: 1rem;
   right: 0; }
   @media only screen and (max-width: 75em) {
     .responsive-header-menu {
@@ -417,7 +423,7 @@ button, input {
       justify-content: flex-end; } }
   @media only screen and (max-width: 56.25em) {
     .responsive-header-menu {
-      right: 1rem; } }
+      right: 5rem; } }
   @media only screen and (max-width: 35.8em) {
     .responsive-header-menu {
       display: flex;
@@ -429,15 +435,22 @@ button, input {
     line-height: 4rem;
     text-align: center;
     border-radius: .6rem;
+    color: #1b1c1e;
     vertical-align: top;
-    margin: 0;
     padding: 0 2rem;
-    margin-left: .5rem;
+    margin-right: .75rem;
     box-shadow: 1px 1px 8px -2px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center; }
+    @media only screen and (max-width: 75em) {
+      .responsive-header-menu__button {
+        line-height: 45px;
+        text-align: center;
+        padding: .2rem 1rem .7rem 1rem;
+        border-radius: .6rem;
+        vertical-align: top; } }
     .responsive-header-menu__button--text {
       display: block;
       color: #1b1c1e;
@@ -448,7 +461,7 @@ button, input {
         .responsive-header-menu__button--text {
           display: none; } }
     .responsive-header-menu__button i {
-      font-size: 1.5rem;
+      font-size: 2rem;
       color: #4d2a69; }
     @media only screen and (max-width: 75em) {
       .responsive-header-menu__button {
@@ -474,43 +487,65 @@ ul.menu {
     flex-direction: flex;
     justify-content: flex-end; }
 
+.dropdown-menu {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  background: white; }
+  @media only screen and (max-width: 75em) {
+    .dropdown-menu {
+      left: -3rem; } }
+  @media only screen and (max-width: 56.25em) {
+    .dropdown-menu {
+      left: -4rem; } }
+  @media only screen and (max-width: 35.8em) {
+    .dropdown-menu {
+      left: -5.5rem; } }
+
 .menu {
   z-index: 10;
   list-style: none;
-  display: flex; }
+  display: flex;
+  margin-top: 2rem; }
   @media only screen and (max-width: 75em) {
     .menu {
-      width: 100%;
-      flex-direction: row;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      right: 0; } }
+      width: 96%;
+      flex-direction: column;
+      right: 0;
+      margin: 2rem 2rem; } }
   @media only screen and (max-width: 35.8em) {
     .menu {
-      width: 100%;
+      width: 96%;
       flex-direction: column;
       left: 0; } }
   .menu .menu-item {
-    color: #4d2a69;
+    color: #1b1c1e;
     text-align: center;
     background: white;
-    border: 1px solid #e1daeb;
     height: 4.5rem;
-    line-height: 4.5rem;
-    min-width: 9.5rem;
-    padding: 0 .5rem;
-    border-radius: .6rem; }
+    border-radius: .6rem;
+    text-transform: uppercase;
+    opacity: 1;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-family: 'Telex', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.2rem 0;
+    border: 1px solid #a91a38; }
+    @media only screen and (max-width: 75em) {
+      .menu .menu-item {
+        box-shadow: 1px 1px 8px -2px; } }
     .menu .menu-item a {
       color: #4d2a69;
-      font-size: 2rem; }
+      font-size: 1.15rem; }
     @media only screen and (max-width: 35.8em) {
       .menu .menu-item {
         display: inline-block;
         text-align: center;
         height: 4.5rem;
         line-height: 4.5rem;
-        min-width: 9.5rem;
-        width: 100%;
         padding: 0 .5rem;
         border-radius: .6rem;
         margin-bottom: .1rem; } }
@@ -574,7 +609,7 @@ ul.menu {
   #bbpress-forums li {
     font-size: 1.5rem; }
   #bbpress-forums a {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: normal; }
   #bbpress-forums div.bbp-pagination {
     width: 62%; }
@@ -587,6 +622,9 @@ ul.menu {
     font-size: 2.4rem; }
     #bbpress-forums div.bbp-breadcrumb a, #bbpress-forums div.bbp-topic-tags a {
       font-size: 1.6rem; }
+  @media only screen and (max-width: 35.8em) {
+    #bbpress-forums div.bbp-search-form input, #bbpress-forums div.bbp-search-form button {
+      padding: .2rem 1.2rem; } }
   #bbpress-forums li.bbp-header {
     background: #4d2a69;
     color: white;
@@ -601,15 +639,27 @@ ul.menu {
   @media only screen and (max-width: 75em) {
     #bbpress-forums .bbp-forum-info, #bbpress-forums .bbp-topic-title {
       width: 46%; } }
+  @media only screen and (max-width: 25em) {
+    #bbpress-forums .bbp-forum-info, #bbpress-forums .bbp-topic-title {
+      width: 42%; } }
   @media only screen and (max-width: 75em) {
     #bbpress-forums .bbp-forum-topic-count, #bbpress-forums .bbp-topic-voice-count {
       width: 14%; } }
+  @media only screen and (max-width: 25em) {
+    #bbpress-forums .bbp-forum-topic-count, #bbpress-forums .bbp-topic-voice-count {
+      width: 20%; } }
   @media only screen and (max-width: 75em) {
     #bbpress-forums .bbp-forum-reply-count, #bbpress-forums .bbp-topic-reply-count {
       width: 14%; } }
+  @media only screen and (max-width: 25em) {
+    #bbpress-forums .bbp-forum-reply-count, #bbpress-forums .bbp-topic-reply-count {
+      width: 18%; } }
   @media only screen and (max-width: 75em) {
     #bbpress-forums .bbp-forum-freshness, #bbpress-forums .bbp-topic-freshness {
       width: 23%; } }
+  @media only screen and (max-width: 25em) {
+    #bbpress-forums .bbp-forum-freshness, #bbpress-forums .bbp-topic-freshness {
+      width: 20%; } }
   #bbpress-forums .bbp-forum-title {
     text-decoration: none;
     color: #1b1c1e;
@@ -649,10 +699,14 @@ ul.menu {
 article.forum, article.topic {
   margin-top: 4rem; }
 
+body.bbp-user-page {
+  font-size: 1.5rem; }
+
 .site-header {
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0 4rem;
   background: linear-gradient(#424242, #1B1B1B);
   background: #4d2a69;
   background: white; }
@@ -665,6 +719,9 @@ article.forum, article.topic {
         margin: 0 1rem; } }
   .site-header__logo {
     margin-top: 1rem; }
+    @media only screen and (max-width: 35.8em) {
+      .site-header__logo {
+        margin-left: -3.5rem; } }
     .site-header__logo .site-title {
       display: none; }
     .site-header__logo img {
@@ -680,13 +737,16 @@ article.forum, article.topic {
     content: "\f007"; }
   .site-header ul.user-buttons {
     position: absolute;
-    top: 2rem;
-    right: 15rem;
+    top: 4rem;
+    right: 17rem;
     display: flex;
     float: right;
     width: auto;
     max-width: 24rem;
     color: #a91a38; }
+    @media only screen and (max-width: 75em) {
+      .site-header ul.user-buttons {
+        right: 15rem; } }
     .site-header ul.user-buttons li {
       display: flex;
       padding-top: .5rem; }
@@ -738,8 +798,8 @@ article.forum, article.topic {
 /*******RESPONSIVE STYLES FOR HEADER AND NAV************/
 #site-navigation {
   display: flex;
-  margin-top: 2rem;
-  margin-left: 4rem; }
+  margin-top: .9rem;
+  margin-left: 0; }
   @media only screen and (max-width: 75em) {
     #site-navigation {
       display: none; } }
@@ -847,10 +907,16 @@ article.forum, article.topic {
   overflow: scroll; }
 
 #site-content {
-  margin: 0 3rem; }
+  padding-bottom: 20rem;
+  margin: 0 6rem;
+  margin-bottom: 0; }
   @media only screen and (max-width: 56.25em) {
     #site-content {
-      margin: 0 1rem; } }
+      margin: 0 1rem;
+      margin-bottom: 7rem; } }
+  @media only screen and (max-width: 35.8em) {
+    #site-content {
+      margin-bottom: 5rem; } }
   #site-content h1.entry-title {
     float: left;
     width: 20rem;
@@ -867,6 +933,8 @@ article.forum, article.topic {
   background: #4d2a69; }
 
 .site-footer {
+  position: absolute;
+  bottom: 0;
   background: #4d2a69;
   height: 5rem;
   width: 100%;

@@ -26,6 +26,14 @@ html {
 #page {
     display:flex; 
     flex-direction: column; 
+    position: relative; 
+    // need this to keep it the same as DFL: 
+
+    // margin: 0 4rem; 
+
+    @include respond('tab-land') {
+        margin: 0; 
+    }
 }
 
 .container {

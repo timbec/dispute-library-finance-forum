@@ -19,7 +19,7 @@
     }
 
     a {
-        font-size: 1.2rem; 
+        font-size: 1.4rem; 
         font-weight: normal; 
     }
 
@@ -55,6 +55,13 @@
         }
     }
 
+    div.bbp-search-form input, div.bbp-search-form button {
+
+        @include respond('phone') {
+            padding: .2rem 1.2rem; 
+        }
+    }
+
     li.bbp-header {
         // background: $color-green; 
         background: $color-blue; 
@@ -78,12 +85,20 @@
         @include respond('tab-land') {
             width: 46%; 
         }
+
+        @include respond('small-phone') {
+            width: 42%; 
+        }
     }
 
     .bbp-forum-topic-count, .bbp-topic-voice-count {
         
         @include respond('tab-land') {
             width: 14%; 
+        }
+
+        @include respond('small-phone') {
+            width: 20%; 
         }
     }
 
@@ -92,12 +107,20 @@
         @include respond('tab-land') {
             width: 14%; 
         }
+
+        @include respond('small-phone') {
+            width: 18%; 
+        }
     }
 
     .bbp-forum-freshness, .bbp-topic-freshness {
         
         @include respond('tab-land') {
             width: 23%; 
+        }
+
+        @include respond('small-phone') {
+            width: 20%; 
         }
     }
 
@@ -168,4 +191,9 @@
 
 article.forum, article.topic {
     margin-top: 4rem; 
+}
+
+// Users Page 
+body.bbp-user-page {
+    font-size: 1.5rem; 
 }

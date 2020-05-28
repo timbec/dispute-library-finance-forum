@@ -16,10 +16,17 @@
 }
 
 #site-content {
-    margin: 0 3rem; 
+    padding-bottom: 20rem; 
+    margin: 0 6rem; 
+    margin-bottom: 0; 
 
     @include respond('tab-port') {
         margin: 0 1rem;
+        margin-bottom: 7rem; 
+    }
+
+    @include respond('phone') {
+        margin-bottom: 5rem; 
     }
 
     h1.entry-title {

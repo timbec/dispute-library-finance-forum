@@ -203,3 +203,43 @@ require get_template_directory() . '/inc/customizer.php';
 // 	require get_template_directory() . '/inc/jetpack.php';
 // }
 
+// Set the private API key for the user (from the user account page) and the user we're accessing the system as.
+$private_key="fcac3864781599ed5faacb35b60b7950e0dc73b4d0296da078593f1b0bb582ed
+";
+$user="tbeckett";
+
+// Search for 'user'
+// $query="user=" . $user . "&function=do_search¶m1=user";
+// Search for 'user'
+$query="user=" . $user . "&function=do_search%user";
+
+//$query="user=" . $user . "&function=create_resource&param1=1&param2=&param3=" . urlencode("http://www.montala.com/img/slideshow/montala-bg.jpg") . "&param4=&param5=&param6=&param7=" . urlencode(json_encode(array(1=>"Foo",8=>"Bar"))); 
+
+// Sign the query using the private key
+$sign=hash("sha256",$private_key . $query);
+
+// Make the request and output the JSON results.
+// $rs_response = file_get_contents("https://disputefinancinglibrary.org/api/?" . $query . "&sign=" . $sign);
+
+// echo '<pre>'; 
+// var_dump('From RS Directly: ' . $rs_response); 
+// echo '</pre>'; 
+
+
+$response = wp_remote_get("http://localhost:8888/rs_version_83/api/?" . $query . "&sign=" . $sign);
+// echo '<pre>'; 
+// var_dump($response); 
+// echo '</pre>'; 
+if ( is_wp_error( $response ) ) {
+   echo 'There be errors, yo!';
+} else {
+   $body = wp_remote_retrieve_body( $response );
+   $data = json_decode( $body );
+}
+
+if ( $data->Data ) {
+   echo 'We got data, yo!';
+   echo '<pre>'; 
+   var_dump($data->Data);
+   echo '</pre>';  
+}

@@ -1,6 +1,6 @@
 <?php get_header(); ?> 
 
-<h1>buddypress.php</h1>
+<!-- <h1>buddypress.php</h1> -->
 
 <div id="site-content">
     <main id="primary" class="site-main">

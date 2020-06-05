@@ -33,25 +33,15 @@
 
     div.bbp-search-form {
         float: right; 
-
-        // @include respond('tab-land') {
-        //     float: left; 
-        // }
     }
 
-    // .bbp-breadcrumb, .bbp-template-notice, .bbp-template-notice, .bbp-pagination {
-
-    //     @include respond('tab-land') {
-    //         margin: 0 4rem; 
-    //     }
-    // }
 
     div.bbp-breadcrumb, div.bbp-topic-tags {
         
         font-size: 2.4rem; 
 
         a {
-            font-size: 1.6rem; 
+            font-size: 2.4rem; 
         }
     }
 
@@ -196,4 +186,15 @@ article.forum, article.topic {
 // Users Page 
 body.bbp-user-page {
     font-size: 1.5rem; 
+}
+
+/// Modify users page
+#front-personal-li, #forums-personal-li {
+    display: none; 
+}
+
+#send-to-input, #subject {
+    text-transform: none; 
+    box-shadow: none; 
+    text-shadow: none; 
 }

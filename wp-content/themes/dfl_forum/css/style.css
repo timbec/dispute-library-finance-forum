@@ -621,7 +621,7 @@ ul.menu {
   #bbpress-forums div.bbp-breadcrumb, #bbpress-forums div.bbp-topic-tags {
     font-size: 2.4rem; }
     #bbpress-forums div.bbp-breadcrumb a, #bbpress-forums div.bbp-topic-tags a {
-      font-size: 1.6rem; }
+      font-size: 2.4rem; }
   @media only screen and (max-width: 35.8em) {
     #bbpress-forums div.bbp-search-form input, #bbpress-forums div.bbp-search-form button {
       padding: .2rem 1.2rem; } }
@@ -701,6 +701,14 @@ article.forum, article.topic {
 
 body.bbp-user-page {
   font-size: 1.5rem; }
+
+#front-personal-li, #forums-personal-li {
+  display: none; }
+
+#send-to-input, #subject {
+  text-transform: none;
+  box-shadow: none;
+  text-shadow: none; }
 
 .site-header {
   width: 100%;

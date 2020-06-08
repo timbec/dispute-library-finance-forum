@@ -189,6 +189,12 @@ body.bbp-user-page {
 }
 
 /// Modify users page
+#buddypress {
+    #header-cover-image {
+        background: url('../img/front-page-image-cropped-2.jpg'); 
+    }
+}
+
 #front-personal-li, #forums-personal-li {
     display: none; 
 }

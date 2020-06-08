@@ -702,6 +702,9 @@ article.forum, article.topic {
 body.bbp-user-page {
   font-size: 1.5rem; }
 
+#buddypress #header-cover-image {
+  background: url("../img/front-page-image-cropped-2.jpg"); }
+
 #front-personal-li, #forums-personal-li {
   display: none; }
 
@@ -714,10 +717,11 @@ body.bbp-user-page {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0 4rem;
+  padding: 0 4rem;
   background: linear-gradient(#424242, #1B1B1B);
   background: #4d2a69;
-  background: white; }
+  background: white;
+  background-image: url("../img/header-bg.jpg"); }
   .site-header .container {
     position: relative;
     width: 96%;
@@ -740,7 +744,7 @@ body.bbp-user-page {
     padding: 0 0.35em 0 0.5em;
     margin: 0px; }
     .site-header li a {
-      color: #a91a38; }
+      color: #fff; }
   .site-header .fa-user:before {
     content: "\f007"; }
   .site-header ul.user-buttons {

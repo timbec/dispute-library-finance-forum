@@ -1,0 +1,621 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bbpress-pmv\n"
+"POT-Creation-Date: 2015-07-22 18:06+0100\n"
+"PO-Revision-Date: 2015-07-23 19:19+0100\n"
+"Last-Translator: Jędrzej Skrzynecki <j@unicornis.pl>\n"
+"Language-Team: \n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: library/pvm.php:25
+#, php-format
+msgid "Problem setting up bbPress Post Via Mail! %s"
+msgstr ""
+
+#: library/pvm.php:61
+msgid "No handler set in the options"
+msgstr ""
+
+#: library/pvm.php:64
+msgid "Handler could not be found."
+msgstr ""
+
+#: library/pvm.php:120 library/pvm.php:125
+msgid "Invalid reply-to address"
+msgstr ""
+
+#: library/pvm/Admin.php:71
+msgid "Main Settings"
+msgstr ""
+
+#: library/pvm/Admin.php:72
+msgid "Messaging Handler"
+msgstr ""
+
+#: library/pvm/Admin.php:74
+msgid "Reply-To Address"
+msgstr ""
+
+#: library/pvm/Admin.php:76
+msgid "From Address"
+msgstr ""
+
+#: library/pvm/Admin.php:78
+msgid "Send To"
+msgstr ""
+
+#: library/pvm/Admin.php:81
+msgid "Send Bad Reply notification"
+msgstr ""
+
+#: library/pvm/Admin.php:92
+msgid "Attachment options"
+msgstr ""
+
+#: library/pvm/Admin.php:94
+msgid "Accept attachments in the mail replies"
+msgstr ""
+
+#: library/pvm/Admin.php:97
+msgid "Maximum number of attachments in the mail replies"
+msgstr ""
+
+#: library/pvm/Admin.php:100
+msgid "Maximum size of attachment in the mail replies"
+msgstr ""
+
+#: library/pvm/Admin.php:103
+msgid "Ignore attachments of this type"
+msgstr ""
+
+#: library/pvm/Admin.php:106
+msgid "Accept attachments of this type"
+msgstr ""
+
+#: library/pvm/Admin.php:109
+msgid "Send Rejected Attachment notification to the poster"
+msgstr ""
+
+#: library/pvm/Admin.php:112
+msgid "Send Rejected Attachment notification to the admin"
+msgstr ""
+
+#: library/pvm/Admin.php:117
+msgid "Notification messages"
+msgstr ""
+
+#: library/pvm/Admin.php:118
+msgid "Bad Reply Subject"
+msgstr ""
+
+#: library/pvm/Admin.php:120
+msgid "Bad Reply Message"
+msgstr ""
+
+#: library/pvm/Admin.php:123
+msgid "Rejected Attachment Subject for user"
+msgstr ""
+
+#: library/pvm/Admin.php:125
+msgid "Rejected Attachment Message for user"
+msgstr ""
+
+#: library/pvm/Admin.php:127
+msgid "Rejected Attachment Subject for admin"
+msgstr ""
+
+#: library/pvm/Admin.php:129
+msgid "Rejected Attachment Message for admin"
+msgstr ""
+
+#: library/pvm/Admin.php:132
+msgid "Notification messages for WordPress"
+msgstr ""
+
+#: library/pvm/Admin.php:133
+msgid "New Post Subject"
+msgstr ""
+
+#: library/pvm/Admin.php:135
+msgid "New Post Message"
+msgstr ""
+
+#: library/pvm/Admin.php:137
+msgid "New Comment Subject"
+msgstr ""
+
+#: library/pvm/Admin.php:139
+msgid "New Comment Message"
+msgstr ""
+
+#: library/pvm/Admin.php:143
+msgid "Notification messages bbPress"
+msgstr ""
+
+#: library/pvm/Admin.php:144
+msgid "New Topic Subject"
+msgstr ""
+
+#: library/pvm/Admin.php:146
+msgid "New Topic Message"
+msgstr ""
+
+#: library/pvm/Admin.php:148
+msgid "New Reply Subject"
+msgstr ""
+
+#: library/pvm/Admin.php:150
+msgid "New Reply Message"
+msgstr ""
+
+#: library/pvm/Admin.php:152
+msgid "Autosubscribe to the Topic on Reply "
+msgstr ""
+
+#: library/pvm/Admin.php:185
+msgid "bbPress Post Via Mail Options"
+msgstr ""
+
+#: library/pvm/Admin.php:257
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: library/pvm/Admin.php:263
+msgid "<strong>ERROR</strong>: options page not found."
+msgstr ""
+
+#: library/pvm/Admin.php:269
+#, php-format
+msgid ""
+"The <code>%1$s</code> setting is unregistered. Unregistered settings are "
+"deprecated. See http://codex.wordpress.org/Settings_API"
+msgstr ""
+
+#: library/pvm/Admin.php:287
+msgid "Settings saved."
+msgstr ""
+
+#: library/pvm/Admin.php:315
+msgid "Invalid handler type"
+msgstr ""
+
+#: library/pvm/Admin.php:321
+msgid "Invalid handler"
+msgstr ""
+
+#: library/pvm/Admin.php:373
+msgid "Allow to post attachments along with replies"
+msgstr ""
+
+#: library/pvm/Admin.php:376 library/pvm/Admin.php:379
+#: library/pvm/Admin.php:383
+msgid "Clear to restore defaults"
+msgstr ""
+
+#: library/pvm/Admin.php:397
+msgid "No handlers are available!"
+msgstr ""
+
+#: library/pvm/Admin.php:426
+msgid "The selected handler is invalid"
+msgstr ""
+
+#: library/pvm/Admin.php:441
+msgid "pvm will append an authentication token to this email before sending."
+msgstr ""
+
+#: library/pvm/Admin.php:459
+msgid "The reply-to address must not contain a plus address section"
+msgstr ""
+
+#: library/pvm/Admin.php:477
+msgid "The reply-to address must be a valid address"
+msgstr ""
+
+#: library/pvm/Admin.php:494
+msgid "Send a notification to the reply author"
+msgstr ""
+
+#: library/pvm/Admin.php:517
+msgid "Leave blank to use the default email address (<code>wordpress@</code>)"
+msgstr ""
+
+#: library/pvm/Admin.php:527
+msgid "New topic {title} on forum {forum}"
+msgstr ""
+
+#: library/pvm/Admin.php:529
+msgid ""
+"You can use following tags: {site} {author} {forum} {title} - they will be "
+"substituted"
+msgstr ""
+
+#: library/pvm/Admin.php:544 library/pvm/Admin.php:579
+#: library/pvm/Admin.php:787 library/pvm/Admin.php:822
+msgid ""
+"{content}\n"
+"---\n"
+"Reply to this email directly or view it online:\n"
+"{link}\n"
+"\n"
+msgstr ""
+
+#: library/pvm/Admin.php:545 library/pvm/Admin.php:580
+#: library/pvm/Admin.php:788 library/pvm/Admin.php:823
+msgid ""
+"You are receiving this email because you subscribed to it. Login and visit "
+"the topic to unsubscribe from these emails."
+msgstr ""
+
+#: library/pvm/Admin.php:548 library/pvm/Admin.php:583
+msgid ""
+"You can use following tags: {author} {site} {forum} {title} {content} {link} "
+"- they will be substituted"
+msgstr ""
+
+#: library/pvm/Admin.php:562
+msgid "New reply in topic {title} on forum {forum}"
+msgstr ""
+
+#: library/pvm/Admin.php:564
+msgid ""
+"You can use following tags: {author} {site} {forum} {title} - they will be "
+"substituted"
+msgstr ""
+
+#: library/pvm/Admin.php:596
+msgid "New post on site {site}"
+msgstr ""
+
+#: library/pvm/Admin.php:598 library/pvm/Admin.php:732
+#: library/pvm/Admin.php:762 library/pvm/Admin.php:807
+#: library/pvm/Admin.php:863
+msgid ""
+"You can use following tags: {author} {site} {title} - they will be "
+"substituted"
+msgstr ""
+
+#: library/pvm/Admin.php:613
+msgid "Subscribe to forum topic when replied to it via mail"
+msgstr ""
+
+#: library/pvm/Admin.php:632
+msgid "Allow attachments to be posted via mail."
+msgstr ""
+
+#: library/pvm/Admin.php:644
+msgid ""
+"Send notification to admin whenever a user tries to attach file type not "
+"listed as allowed."
+msgstr ""
+
+#: library/pvm/Admin.php:656
+msgid ""
+"Send notification to user on the attemp to attach file type not listed as "
+"allowed."
+msgstr ""
+
+#: library/pvm/Admin.php:668
+msgid "Allowed number of attachments to be posted per mail."
+msgstr ""
+
+#: library/pvm/Admin.php:677
+msgid "Allowed size of each attachments to be posted per mail."
+msgstr ""
+
+#: library/pvm/Admin.php:691
+msgid ""
+"Type of attachments allowed. Only attachments matching listes MIME types or "
+"file extentions will be accepted."
+msgstr ""
+
+#: library/pvm/Admin.php:693 library/pvm/Admin.php:708
+msgid ""
+"Provide MIME types or file extensions, one item per line. Comments after # "
+"ignored"
+msgstr ""
+
+#: library/pvm/Admin.php:706
+msgid ""
+"Type of attachments to be ignored. They will be silently rejected without "
+"any notification."
+msgstr ""
+
+#: library/pvm/Admin.php:710
+msgid "Example:"
+msgstr ""
+
+#: library/pvm/Admin.php:713
+msgid ""
+"Attachments listed here will be excluded prior to analizing against <b> "
+"allowed</b> list below"
+msgstr ""
+
+#: library/pvm/Admin.php:730
+msgid ""
+"Some attachments to your reply to post {title} on {site} have been rejected"
+msgstr ""
+
+#: library/pvm/Admin.php:747
+msgid ""
+"You sent a reply to the post {title} on {site} with wrong attachments.\n"
+"They were rejected because of following errors:\n"
+"\n"
+"{error}\n"
+"\n"
+msgstr ""
+
+#: library/pvm/Admin.php:748
+msgid "Correct them and send your reply again."
+msgstr ""
+
+#: library/pvm/Admin.php:751
+msgid ""
+"You can use following tags: {author} {site} {title} {error} - they will be "
+"substituted"
+msgstr ""
+
+#: library/pvm/Admin.php:760
+msgid ""
+"Some attachments to reply of {author} to post {title} on {site} have been "
+"rejected"
+msgstr ""
+
+#: library/pvm/Admin.php:772
+msgid ""
+"User {user} replied to the post {title} on {site} with wrong attachments.\n"
+"They were rejected because of following errors:\n"
+"\n"
+"{error}\n"
+"\n"
+msgstr ""
+
+#: library/pvm/Admin.php:773
+msgid ""
+"Consider changing some settings for attachments in plugin settings panel by "
+"adding allowed attachment types."
+msgstr ""
+
+#: library/pvm/Admin.php:776
+msgid ""
+"You can use following tags: {author} {site} {title} {content} {error} - they "
+"will be substituted"
+msgstr ""
+
+#: library/pvm/Admin.php:791
+msgid ""
+"You can use following tags: {author} {site} {title} {content} {link} - they "
+"will be substituted"
+msgstr ""
+
+#: library/pvm/Admin.php:805
+msgid "New comment to post {title} on {site}"
+msgstr ""
+
+#: library/pvm/Admin.php:826
+msgid ""
+"You can use following tags: {author} {site} {title} {content} {link}- they "
+"will be substituted"
+msgstr ""
+
+#: library/pvm/Admin.php:839
+msgid "Send a notification about bad reply to the reply author"
+msgstr ""
+
+#: library/pvm/Admin.php:861
+msgid "Bad reply {title} on site {site}"
+msgstr ""
+
+#: library/pvm/Admin.php:878
+msgid ""
+"Hi {user},\n"
+"Someone just tried to post to the {title} topic as you, but were unable to\n"
+msgstr ""
+
+#: library/pvm/Admin.php:879
+msgid "authenticate as you the message send by {from}. \n"
+msgstr ""
+
+#: library/pvm/Admin.php:880
+msgid "Error message: {error}\n"
+msgstr ""
+
+#: library/pvm/Admin.php:881
+msgid ""
+"If you recently tried to reply to this topic, try replying to the original "
+"topic again.\n"
+msgstr ""
+
+#: library/pvm/Admin.php:882
+msgid ""
+"If that does not work, post on the topic {link} via your browser and tell "
+"the admin.\n"
+"\n"
+msgstr ""
+
+#: library/pvm/Admin.php:883
+msgid ""
+"The admins at {site}.\n"
+"\n"
+msgstr ""
+
+#: library/pvm/Admin.php:886
+msgid ""
+"You can use following tags: {user} {from} {site} {title} - they will be "
+"substituted"
+msgstr ""
+
+#: library/pvm/Admin.php:908
+msgid "The from address must be a valid address"
+msgstr ""
+
+#: library/pvm/Admin.php:936
+msgid "Handler Settings"
+msgstr ""
+
+#: library/pvm/Manager.php:106
+msgid "Notification Settings"
+msgstr ""
+
+#: library/pvm/Manager.php:176
+msgid "Set the default user notification settings here."
+msgstr ""
+
+#: library/pvm/Manager.php:226
+msgid "The notification option is invalid"
+msgstr ""
+
+#: library/pvm/Reply.php:79
+msgid "instead of"
+msgstr ""
+
+#: library/pvm/Reply.php:83
+msgid "for attachment "
+msgstr ""
+
+#: library/pvm/Reply.php:130
+msgid "Attachment"
+msgstr ""
+
+#: library/pvm/Reply.php:130
+msgid "not allowed by extension nor Mime type"
+msgstr ""
+
+#: library/pvm/Reply.php:135
+msgid "Maximum number of attachments exceeded, ommiting remaining"
+msgstr ""
+
+#: library/pvm/Reply.php:139
+msgid "Maximum size of attachment exceeded, skipped this one"
+msgstr ""
+
+#: library/pvm/Connector/bbPress.php:344
+msgid "Invalid authentication code"
+msgstr ""
+
+#: library/pvm/Connector/bbPress.php:352
+msgid "Topic does not exist or was deleted"
+msgstr ""
+
+#: library/pvm/Connector/WordPress.php:668
+msgid "All new posts"
+msgstr ""
+
+#: library/pvm/Connector/WordPress.php:669
+#: library/pvm/Connector/WordPress.php:676
+msgid "No notifications"
+msgstr ""
+
+#: library/pvm/Connector/WordPress.php:673
+msgid "All new comments"
+msgstr ""
+
+#: library/pvm/Connector/WordPress.php:674
+msgid "New comments on posts I've commented on"
+msgstr ""
+
+#: library/pvm/Connector/WordPress.php:675
+msgid "Replies to my comments"
+msgstr ""
+
+#: library/pvm/Connector/WordPress.php:684
+#: library/pvm/Connector/WordPress.php:689
+msgid "All"
+msgstr ""
+
+#: library/pvm/Connector/WordPress.php:685
+#: library/pvm/Connector/WordPress.php:692
+msgid "None"
+msgstr ""
+
+#: library/pvm/Connector/WordPress.php:690
+msgid "Participant"
+msgstr ""
+
+#: library/pvm/Connector/WordPress.php:691
+msgid "Replies"
+msgstr ""
+
+#: library/pvm/Handler/Mandrill.php:27
+msgid "Mandrill API key not set"
+msgstr ""
+
+#: library/pvm/Handler/Mandrill.php:116 library/pvm/Handler/Postmark.php:115
+msgid "Invalid API key"
+msgstr ""
+
+#: library/pvm/Handler/Mandrill.php:118 library/pvm/Handler/Postmark.php:117
+#, php-format
+msgid "Error with sent body: %s"
+msgstr ""
+
+#: library/pvm/Handler/Mandrill.php:120
+msgid "Mandrill server error"
+msgstr ""
+
+#: library/pvm/Handler/Mandrill.php:122 library/pvm/Handler/Postmark.php:121
+msgid "Unknown error"
+msgstr ""
+
+#: library/pvm/Handler/Mandrill.php:127
+msgid "Invalid response from Mandrill"
+msgstr ""
+
+#: library/pvm/Handler/Mandrill.php:180
+#, php-format
+msgid ""
+"Once you've set up your API key here, add an Inbound route in your <a "
+"href='%s'>Mandrill inbound dashboard</a> to <code>%s</code>"
+msgstr ""
+
+#: library/pvm/Handler/Mandrill.php:198
+msgid "Mandrill API Key"
+msgstr ""
+
+#: library/pvm/Handler/Mandrill.php:212
+#, php-format
+msgid ""
+"You'll need to create an API key on the Mandrill site. Head to <a "
+"href='%s'>your settings</a>, then generate an API key under the credentials "
+"tab"
+msgstr ""
+
+#: library/pvm/Handler/Postmark.php:28
+msgid "Postmark API key not set"
+msgstr ""
+
+#: library/pvm/Handler/Postmark.php:119
+msgid "Postmark server error"
+msgstr ""
+
+#: library/pvm/Handler/Postmark.php:126
+msgid "Invalid response from Postmark"
+msgstr ""
+
+#: library/pvm/Handler/Postmark.php:209
+#, php-format
+msgid ""
+"Once you've set up your API key here, make sure to set your Inbound Hook URL "
+"to <code>%s</code>"
+msgstr ""
+
+#: library/pvm/Handler/Postmark.php:225
+msgid "Postmark API Key"
+msgstr ""
+
+#: library/pvm/Handler/Postmark.php:238
+msgid ""
+"You'll need to create an API key on the Postmark site. Head to <a "
+"href='https://postmarkapp.com/servers'>your server</a>, then generate an API "
+"key under the credentials tab"
+msgstr ""

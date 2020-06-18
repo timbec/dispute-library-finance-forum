@@ -1,10 +1,10 @@
 === WordPress Persistent Login ===
 Contributors: lukeseager, freemius
 Donate link: 
-Tags: login, persistent login, keep users logged in, remember users, remember user, login cookie, remember me cookie, remember login, stay logged in, login, auto login
-Requires at least: 4.9.4
-Tested up to: 5.3
-Stable tag: 1.3.8
+Tags: login, persistent login, keep users logged in, remember users, remember user, login cookie, remember me cookie, remember login, stay logged in, login, auto login, remember me
+Requires at least: 5.0
+Tested up to: 5.4.1
+Stable tag: 1.3.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,14 +14,14 @@ Persistent Login keeps users logged into your website securely, unless they expl
 
 Persistent Login is a simple plugin that keeps users logged into your website unless they explicitly choose to log-out. 
 
-It requires no set-up, simply install and save your users time by keeping them logged into your website securely, avoiding the annoyance of forgetting usernames & passwords.
+It requires no set-up, just install and save your users time by keeping them logged into your website securely, avoiding the annoyance of forgetting usernames & passwords.
 
 For added security, users can visit their Profile page in the WP Admin area to see how many sessions they have, what device was used and when they were last active. The user can choose to end any session with the click of a button!
 
 ## Features
 * Selects the 'Remember Me' box by default. 
   * If left checked, users will be kept logged in for 1 year
-* Each time a user revisits your website their login is extended to 1 year again
+* Each time a user revisits your website, their login is extended to 1 year again
 * Dashboard stats show you how many users are being kept logged in
 * Force log-out all users with the click of a button
 * Users can manage their active sessions from the Profile page in the admin area
@@ -45,13 +45,28 @@ These plugins are supported out of the box. No hassle and no settings to change!
 ### Note
 This plugin honours the 'Remember Me' checkbox. It is checked by default, but if it is unchecked the user won't be remembered.
 
-The premium plan allows you to hide the 'Remember Me' checkbox, so that users are always remembered.
+
+### Premium Version
+
+There is a premium version of the plugin for those who want more control. 
+
+The premium plan offers the following features:
+
+* Manage which user roles have persistent login
+* Set how long users are kept logged in for (up to 1 year)
+* Allows you to hide the 'Remember Me' checkbox, so that users are always remembered.
+* Session management for users: Users can see all logins. Block Editor and Shortcode support
+* Session management for admins: End any users session from the admin area quickly and easily
+* Free localhost licence
+* All future features and updates (with a valid licence)
+* Priority Support direct from within WP admin
+
 
 == Installation ==
 
 1. Download and install the plugin onto your WordPress website
 2. Activate the plugin
-3. (optional) Click the End all Sessions button on the plugin settings page to force all users to login again
+3. Click the End all Sessions button on the plugin settings page to force all users to login again
 
 
 == Frequently Asked Questions ==
@@ -104,12 +119,14 @@ No. WordPress Persistent login isn't compatible with multisite installations at 
 Yes. The free forever version is and always will be free. All of your users will be kept logged-in when they revisit your website. 
 
 A premium version of the plugin is available if you want to:
-* Control which User Roles are kept logged in
-* Hide Remember Me boxes from users
-* Change the maximum time users are kept logged in for
-* Allow users to manage their own sessions from the front-end (supports WordPress 5 block editor)
-* Allow admins to manage all users sessions from the WP Admin area
-* Priority support
+* Manage which user roles have persistent login
+* Set how long users are kept logged in for (up to 1 year)
+* Allows you to hide the 'Remember Me' checkbox, so that users are always remembered.
+* Session management for users: Users can see all logins. Block Editor and Shortcode support
+* Session management for admins: End any users session from the admin area quickly and easily
+* Free localhost licence
+* All future features and updates (with a valid licence)
+* Priority Support direct from within WP admin
 
 == Screenshots ==
 
@@ -119,6 +136,26 @@ A premium version of the plugin is available if you want to:
 4. Manage your sessions from the Your Profile page in the WP Admin area (premium admins can manage all users sessions).
 
 == Changelog == 
+
+= 1.3.12 =
+* Bug fix for some users experiencing login retention issues.
+* Improved performance of login validation for users.
+
+= 1.3.11 =
+* Performance improvement: Created wp cron job to check the number of logged in users periodically.
+
+= 1.3.10 =
+* Fixed PHP Notice error
+* Updated how settings are stored in database
+* Minor improvements to code
+* Tested support for WP 5.4.1
+
+= 1.3.9 =
+* Updated browser detection package
+* Tested with WP 5.4
+* Updated minimum required WP version to 5.4
+* Plugin support: Added support for AR Member login forms - auto-tick remember me boxes
+* Premium support: Added support for hiding AR Member remember me checkboxes
 
 = 1.3.8 =
 * New feature: Admin option to allow duplicate sessions. Useful if you're having trouble staying logged in on multiple devices.

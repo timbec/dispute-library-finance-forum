@@ -6,9 +6,9 @@
  *   Description: Keep users logged into your website securely.
  *   Author: Luke Seager
  *   Author URI:  https://lukeseager.com/
- *   Version: 1.3.8
- *
-*/
+ *   Version: 1.3.12
+ *   
+ */
 /*   
     Copyright 2018 Luke Seager  (email : info@lukeseager.com)
 
@@ -34,6 +34,7 @@ if ( !function_exists( 'persistent_login' ) ) {
      * Load freemius
      * ------------------------------------------------------------------------ */
     include_once plugin_dir_path( __FILE__ ) . 'freemius.php';
+    require plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
     /* ------------------------------------------------------------------------ *
      * Setup - include plugin and get global vars
      * ------------------------------------------------------------------------ */
@@ -43,7 +44,7 @@ if ( !function_exists( 'persistent_login' ) ) {
     $tableRef = 'persistent_logins';
     // set current database version
     global  $persistent_login_db_version ;
-    $persistent_login_db_version = '1.3.0';
+    $persistent_login_db_version = '1.3.12';
     // set global plugin path
     global  $pluginPath ;
     $pluginPath = plugin_dir_path( __FILE__ );
@@ -55,18 +56,15 @@ if ( !function_exists( 'persistent_login' ) ) {
         // add db version for future reference
         global  $persistent_login_db_version ;
         update_option( 'persistent_login_db_version', $persistent_login_db_version );
-        // set detaults for permissions - all roles are available for persistent login by default
-        // default roles
-        
-        if ( !get_option( 'persistent_login_options_user_access' ) ) {
-            global  $wp_roles ;
-            $options = array();
-            foreach ( $wp_roles->roles as $key => $value ) {
-                array_push( $options, $key );
-            }
-            update_option( 'persistent_login_options_user_access', $options );
+        // setup CRON to check how many users are logged in
+        // Use wp_next_scheduled to check if the event is already scheduled
+        $timestamp = wp_next_scheduled( 'persistent_login_user_count' );
+        // If $timestamp == false schedule daily backups since it hasn't been done previously
+        if ( $timestamp == false ) {
+            // Schedule the event for right now, then to repeat daily using the hook 'persistent_login_user_count'
+            wp_schedule_event( time(), 'twicedaily', 'persistent_login_user_count' );
         }
-        
+        // set detaults for permissions - all roles are available for persistent login by default
         // free options
         if ( !get_option( 'persistent_login_options' ) ) {
             $defaultOptions = array(
@@ -148,7 +146,7 @@ if ( !function_exists( 'persistent_login' ) ) {
             if ( $drop ) {
                 // update db version option
                 update_option( 'persistent_login_db_version', '1.3.0' );
-                $persistent_login_db_version == '1.3.0';
+                $persistent_login_db_version = '1.3.0';
                 return true;
             } else {
                 return false;
@@ -157,6 +155,40 @@ if ( !function_exists( 'persistent_login' ) ) {
         }
         
         // 1.3.0 update
+        // fixing options in options table
+        
+        if ( $persistent_login_db_version === '1.3.0' ) {
+            // fetching the current settings, which we don't need any more!
+            $current_settings = get_option( 'persistent_login_options_user_access' );
+            
+            if ( $current_settings ) {
+                // now delete the old free option, not needed anymore
+                delete_option( 'persistent_login_options_user_access' );
+                // update db version option
+                update_option( 'persistent_login_db_version', '1.3.10' );
+                $persistent_login_db_version = '1.3.10';
+                return true;
+            }
+        
+        }
+        
+        // 1.3.10 update
+        
+        if ( $persistent_login_db_version === '1.3.10' ) {
+            // Use wp_next_scheduled to check if the event is already scheduled
+            $timestamp = wp_next_scheduled( 'persistent_login_user_count' );
+            // If $timestamp == false schedule daily backups since it hasn't been done previously
+            if ( $timestamp == false ) {
+                // Schedule the event for right now, then to repeat daily using the hook 'persistent_login_user_count'
+                wp_schedule_event( time(), 'twicedaily', 'persistent_login_user_count' );
+            }
+            // update db version option
+            update_option( 'persistent_login_db_version', '1.3.12' );
+            $persistent_login_db_version = '1.3.12';
+            return true;
+        }
+        
+        // 1.3.12 update
     }
     
     /* ------------------------------------------------------------------------ *
@@ -169,10 +201,12 @@ if ( !function_exists( 'persistent_login' ) ) {
     function persistent_login_uninstall_cleanup()
     {
         // remove database options
-        $options = array( 'persistent_login_db_version', 'persistent_login_options_user_access', 'persistent_login_options' );
+        $options = array( 'persistent_login_db_version', 'persistent_login_options', 'persistent_login_user_count' );
         foreach ( $options as $option ) {
             delete_option( $option );
         }
+        // unschedule cron event
+        wp_clear_scheduled_hook( 'persistent_login_user_count' );
     }
     
     persistent_login()->add_action( 'after_uninstall', 'persistent_login_uninstall_cleanup' );
@@ -188,13 +222,6 @@ if ( !function_exists( 'persistent_login' ) ) {
         {
             // delete premium options from db
             delete_option( 'persistent_login_options_premium' );
-            // set default user roles back to all users
-            global  $wp_roles ;
-            $options = array();
-            foreach ( $wp_roles->roles as $key => $value ) {
-                array_push( $options, $key );
-            }
-            update_option( 'persistent_login_options_user_access', $options );
         }
         
         add_action( 'admin_init', 'persistent_login_downgrade_settings' );
@@ -204,15 +231,109 @@ if ( !function_exists( 'persistent_login' ) ) {
      * END Downgrade data after trial
      * ------------------------------------------------------------------------ */
     /* ------------------------------------------------------------------------ *
+     * Usage Stats CRON job
+     * ------------------------------------------------------------------------ */
+    // Hook our function , persistent_login_update_user_count(), into the action wi_create_daily_backup
+    add_action( 'persistent_login_user_count', 'persistent_login_update_user_count' );
+    function persistent_login_update_user_count()
+    {
+        // setup variables for chunking
+        $chunk_size = 1;
+        $offset = 0;
+        $found_users = 1;
+        // get the ball rolling
+        $loggedInUsers = array();
+        $result = [];
+        $roles = [];
+        // add the current roles to the outputted roles array, start user count at 0.
+        
+        if ( isset( $persistent_login_premium_options ) ) {
+            $allowed_roles = $persistent_login_premium_options['roles'];
+            foreach ( $allowed_roles as $role ) {
+                $roles[$role] = 0;
+            }
+        } else {
+            $allowed_roles = array();
+            global  $wp_roles ;
+            foreach ( $wp_roles->roles as $key => $value ) {
+                $roles[$key] = 0;
+            }
+        }
+        
+        // chunk the results
+        while ( $found_users > 0 ) {
+            $loggedInUsers = array();
+            $args = array(
+                'role__in' => $allowed_roles,
+                'fields'   => array( 'ID' ),
+                'number'   => $chunk_size,
+                'offset'   => $chunk_size * $offset,
+            );
+            $allUsers = get_users( $args );
+            // loop through the chunk we've got, check if these users have sessions
+            foreach ( $allUsers as $user ) {
+                $wp_session_token = WP_Session_Tokens::get_instance( $user->ID );
+                $sessions = count( $wp_session_token->get_all() );
+                if ( $sessions ) {
+                    array_push( $loggedInUsers, $user->ID );
+                }
+            }
+            if ( $loggedInUsers ) {
+                
+                if ( !empty($allowed_roles) ) {
+                    foreach ( $allowed_roles as $role ) {
+                        // get all unique users for each role
+                        $args = array(
+                            'role'    => $role,
+                            'include' => $loggedInUsers,
+                            'fields'  => array( 'ID' ),
+                        );
+                        $users = count( get_users( $args ) );
+                        $roles[$role] = $roles[$role] + $users;
+                    }
+                } else {
+                    // get all roles
+                    global  $wp_roles ;
+                    foreach ( $wp_roles->roles as $key => $value ) {
+                        // get all unique users for each role
+                        $args = array(
+                            'role'    => $key,
+                            'include' => $loggedInUsers,
+                            'fields'  => array( 'ID' ),
+                        );
+                        $users = count( get_users( $args ) );
+                        $roles[$key] = $roles[$key] + $users;
+                    }
+                }
+            
+            }
+            // increase the array size
+            $offset += 1;
+            $found_users = count( $allUsers );
+        }
+        // update option
+        update_option( 'persistent_login_user_count', $roles );
+    }
+    
+    /* ------------------------------------------------------------------------ *
+     * END Usage Stats CRON job
+     * ------------------------------------------------------------------------ */
+    /* ------------------------------------------------------------------------ *
      * Usage Stats
      * ------------------------------------------------------------------------ */
     // get the current device count
     function persistent_login_getDeviceCount()
     {
         $deviceCount = 0;
-        $persistent_login_roles = get_option( 'persistent_login_options_user_access' );
+        
+        if ( isset( $persistent_login_premium_options ) ) {
+            $roles = $persistent_login_premium_options['roles'];
+        } else {
+            $roles = array();
+        }
+        
         $args = array(
-            'role__in' => $persistent_login_roles,
+            'role__in' => $roles,
             'fields'   => array( 'ID' ),
         );
         $allUsers = get_users( $args );
@@ -231,64 +352,21 @@ if ( !function_exists( 'persistent_login' ) ) {
     // get the current user count
     function persistent_login_getUserCount()
     {
-        $userCount = 0;
-        $persistent_login_roles = get_option( 'persistent_login_options_user_access' );
-        $args = array(
-            'role__in' => $persistent_login_roles,
-            'fields'   => array( 'ID' ),
-        );
-        $allUsers = get_users( $args );
-        foreach ( $allUsers as $user ) {
-            $newUser = true;
-            $wp_session_token = WP_Session_Tokens::get_instance( $user->ID );
-            $sessions = count( $wp_session_token->get_all() );
-            if ( $sessions ) {
-                $userCount++;
+        $user_count = 0;
+        $roles = get_option( 'persistent_login_user_count' );
+        if ( isset( $roles ) && !empty($roles) ) {
+            foreach ( $roles as $role ) {
+                $user_count += $role;
             }
         }
-        return $userCount;
+        return $user_count;
     }
     
     // get the current roles breakdown
     function persistent_login_getRolesBreakdown()
     {
-        // new code
-        $persistent_login_roles = get_option( 'persistent_login_options_user_access' );
-        $args = array(
-            'role__in' => $persistent_login_roles,
-            'fields'   => array( 'ID' ),
-        );
-        $allUsers = get_users( $args );
-        $loggedInUsers = array();
-        $result = [];
-        $roles = [];
-        foreach ( $allUsers as $user ) {
-            $wp_session_token = WP_Session_Tokens::get_instance( $user->ID );
-            $sessions = count( $wp_session_token->get_all() );
-            if ( $sessions ) {
-                array_push( $loggedInUsers, $user->ID );
-            }
-        }
-        // get all roles
-        global  $wp_roles ;
-        foreach ( $wp_roles->roles as $key => $value ) {
-            
-            if ( $loggedInUsers ) {
-                // get all unique users for each role
-                $args = array(
-                    'role'    => $key,
-                    'include' => $loggedInUsers,
-                    'fields'  => array( 'ID' ),
-                );
-                $users = count( get_users( $args ) );
-                $roles[$value['name']] = $users;
-            } else {
-                $roles[$value['name']] = 0;
-            }
-        
-        }
-        $result = $roles;
-        return $result;
+        $user_count = get_option( 'persistent_login_user_count' );
+        return $user_count;
     }
     
     /* ------------------------------------------------------------------------ *
@@ -386,23 +464,9 @@ if ( !function_exists( 'persistent_login' ) ) {
     {
         
         if ( $remember ) {
-            $user = get_user_by( 'ID', $user_id );
-            $persistent_login_roles = get_option( 'persistent_login_options_user_access' );
-            if ( $persistent_login_roles ) {
-                
-                if ( array_intersect( $user->roles, $persistent_login_roles ) ) {
-                    $options = get_option( 'persistent_login_options_premium' );
-                    
-                    if ( $options['cookieTime'] ) {
-                        $expiration = $options['cookieTime'];
-                    } else {
-                        $expiration = strtotime( '1 year', 0 );
-                        // return default if nothing is set (1 year)
-                    }
-                
-                }
-            
-            }
+            // default expiration to 1 year
+            $expiration = strtotime( '1 year', 0 );
+            $user = get_user_by( 'id', $user_id );
         }
         
         // return the expiration time
@@ -425,7 +489,7 @@ if ( !function_exists( 'persistent_login' ) ) {
     function persistent_login_rememberme_checked()
     {
         echo  '<script>' ;
-        echo  "\n\t\t\t\t\tdocument.addEventListener('DOMContentLoaded', function(event) {\n\t\t\t\t\t\t\n\t\t\t\t\t\t// check remember me by default\n\t\t\t\t\t\tvar forms = document.querySelectorAll('form'); \t\t\t\t\t\t\n\t\t\t\t\t\tif (forms) {\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t// look out for inputs named rememberme\n\t\t\t\t\t\t\t\tvar rememberArray = [];\n\t\t\t\t\t\t\t\tvar rememberMe = document.getElementsByName('rememberme');\n\t\t\t\t\t\t\t\tif( rememberMe.length ) {\n\t\t\t\t\t\t\t\t\trememberArray.push(rememberMe);\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t// look out for inputs named remember\n\t\t\t\t\t\t\t\tvar remember = document.getElementsByName('remember');\n\t\t\t\t\t\t\t\tif( remember.length ) {\n\t\t\t\t\t\t\t\t\trememberArray.push(remember);\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t// if there are remember me inputs\n\t\t\t\t\t\t\tif( rememberArray.length ) { \t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t// 'check' the inputs so they're active\t\t\n\t\t\t\t\t\t\t\t\tfor (i = 0; i < rememberArray.length; i++) {\n\t\t\t\t\t\t\t\t\t\tfor (x = 0; x < rememberArray[i].length; x++) {\n\t\t\t\t\t\t\t\t\t\t  rememberArray[i][x].checked = true;\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t}\n\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t// test for Ultimate Member Plugin forms\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t// find the UM checkboxes\n\t\t\t\t\t\t\t\tvar UmCheckboxIcon = document.querySelectorAll('.um-icon-android-checkbox-outline-blank');\n\t\t\t\t\t\t\t\tvar UmCheckboxLabel = document.querySelectorAll('.um-field-checkbox');\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tif( UmCheckboxIcon.length && UmCheckboxLabel.length ) {\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t// loop through UM checkboxes\n\t\t\t\t\t\t\t\t\tfor (i = 0; i < UmCheckboxLabel.length; i++) {\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t// find the UM input element\n\t\t\t\t\t\t\t\t\t\tvar UMCheckboxElement = UmCheckboxLabel[i].children;\n\t\t\t\t\t\t\t\t\t\tvar UMCheckboxElementName = UMCheckboxElement[0].getAttribute('name');\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t// check if UM input element is remember me box\n\t\t\t\t\t\t\t\t\t\tif( UMCheckboxElementName === 'remember' || UMCheckboxElementName === 'rememberme' ) {\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t// activate the UM checkbox if it is a remember me box\n\t\t\t\t\t\t\t\t\t\t\tUmCheckboxLabel[i].classList.add('active');\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t// swap out UM classes to show the active state\n\t\t\t\t\t\t\t\t\t\t\tUmCheckboxIcon[i].classList.add('um-icon-android-checkbox-outline');\n\t\t\t\t\t\t\t\t\t\t\tUmCheckboxIcon[i].classList.remove('um-icon-android-checkbox-outline-blank');\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t} // endif\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t} // end for\n\t\n\t\t\t\t\t\t\t\t} // endif UM\n\t\t\t\t\t\n\t\t\t\t\t\t} // endif forms\n\t\t\t\t\t\t\n\t\t\t\t\t});\n\t\t\n\t\t\t\t\t" ;
+        echo  "\n\t\t\t\t\tdocument.addEventListener('DOMContentLoaded', function(event) {\n\t\t\t\t\t\t\n\t\t\t\t\t\t// check remember me by default\n\t\t\t\t\t\tvar forms = document.querySelectorAll('form'); \t\t\t\t\t\t\n\t\t\t\t\t\tif (forms) {\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t// look out for inputs named rememberme\n\t\t\t\t\t\t\t\tvar rememberArray = [];\n\t\t\t\t\t\t\t\tvar rememberMe = document.getElementsByName('rememberme');\n\t\t\t\t\t\t\t\tif( rememberMe.length ) {\n\t\t\t\t\t\t\t\t\trememberArray.push(rememberMe);\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t// look out for inputs named remember\n\t\t\t\t\t\t\t\tvar remember = document.getElementsByName('remember');\n\t\t\t\t\t\t\t\tif( remember.length ) {\n\t\t\t\t\t\t\t\t\trememberArray.push(remember);\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t// if there are remember me inputs\n\t\t\t\t\t\t\tif( rememberArray.length ) { \t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t// 'check' the inputs so they're active\t\t\n\t\t\t\t\t\t\t\t\tfor (i = 0; i < rememberArray.length; i++) {\n\t\t\t\t\t\t\t\t\t\tfor (x = 0; x < rememberArray[i].length; x++) {\n\t\t\t\t\t\t\t\t\t\t  rememberArray[i][x].checked = true;\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t}\n\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t// test for Ultimate Member Plugin forms\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t// find the UM checkboxes\n\t\t\t\t\t\t\t\tvar UmCheckboxIcon = document.querySelectorAll('.um-icon-android-checkbox-outline-blank');\n\t\t\t\t\t\t\t\tvar UmCheckboxLabel = document.querySelectorAll('.um-field-checkbox');\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tif( UmCheckboxIcon.length && UmCheckboxLabel.length ) {\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t// loop through UM checkboxes\n\t\t\t\t\t\t\t\t\tfor (i = 0; i < UmCheckboxLabel.length; i++) {\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t// find the UM input element\n\t\t\t\t\t\t\t\t\t\tvar UMCheckboxElement = UmCheckboxLabel[i].children;\n\t\t\t\t\t\t\t\t\t\tvar UMCheckboxElementName = UMCheckboxElement[0].getAttribute('name');\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t// check if UM input element is remember me box\n\t\t\t\t\t\t\t\t\t\tif( UMCheckboxElementName === 'remember' || UMCheckboxElementName === 'rememberme' ) {\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t// activate the UM checkbox if it is a remember me box\n\t\t\t\t\t\t\t\t\t\t\tUmCheckboxLabel[i].classList.add('active');\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t// swap out UM classes to show the active state\n\t\t\t\t\t\t\t\t\t\t\tUmCheckboxIcon[i].classList.add('um-icon-android-checkbox-outline');\n\t\t\t\t\t\t\t\t\t\t\tUmCheckboxIcon[i].classList.remove('um-icon-android-checkbox-outline-blank');\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t} // endif\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t} // end for\n\t\n\t\t\t\t\t\t\t\t} // endif UM\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t// test for AR Member\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tvar ArmRememberMeCheckboxContainer = document.querySelectorAll('.arm_form_input_container_rememberme');\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tif( ArmRememberMeCheckboxContainer.length ) {\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\tfor (i = 0; i < ArmRememberMeCheckboxContainer.length; i++) {\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\tvar ArmRememberMeCheckbox = ArmRememberMeCheckboxContainer[i].querySelectorAll('md-checkbox');\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\tif( ArmRememberMeCheckbox.length ) {\n\t\t\t\t\t\t\t\t\t\t\t// loop through AR Member checkboxes\n\t\t\t\t\t\t\t\t\t\t\tfor (x = 0; x < ArmRememberMeCheckbox.length; x++) {\n\t\t\t\t\t\t\t\t\t\t\t\tif( ArmRememberMeCheckbox[x].classList.contains('ng-empty') ) {\n\t\t\t\t\t\t\t\t\t\t\t\t\tArmRememberMeCheckbox[x].click();\n\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t} // end if AR Member\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t} // endif forms\n\t\t\t\t\t\t\n\t\t\t\t\t});\n\t\t\n\t\t\t\t\t" ;
         echo  '</script>' ;
     }
     
@@ -444,16 +508,38 @@ if ( !function_exists( 'persistent_login' ) ) {
     {
         
         if ( $user ) {
-            $persistent_login_roles = get_option( 'persistent_login_options_user_access' );
+            
+            if ( persistent_login()->can_use_premium_code() ) {
+                // check if user has premium options
+                $persistent_login_premium_options = get_option( 'persistent_login_options_premium' );
+                if ( isset( $persistent_login_premium_options ) && !empty($persistent_login_premium_options['roles']) ) {
+                    $persistent_login_roles = $persistent_login_premium_options['roles'];
+                }
+            }
+            
+            
+            if ( !isset( $persistent_login_roles ) ) {
+                global  $wp_roles ;
+                $persistent_login_roles = array();
+                foreach ( $wp_roles->roles as $key => $value ) {
+                    array_push( $persistent_login_roles, $key );
+                }
+            }
+            
             
             if ( $persistent_login_roles ) {
                 
-                if ( array_intersect( $user->roles, $persistent_login_roles ) ) {
-                    // update the cookie expiration time
-                    $options = get_option( 'persistent_login_options_premium' );
+                if ( is_array( $user->roles ) ) {
+                    $role_check = array_intersect( $user->roles, $persistent_login_roles );
+                } else {
+                    $role_check = in_array( $user->roles, $persistent_login_roles );
+                }
+                
+                
+                if ( $role_check === true ) {
                     
-                    if ( $options ) {
-                        $expiration = $options['cookieTime'];
+                    if ( isset( $persistent_login_premium_options ) && isset( $persistent_login_premium_options['cookieTime'] ) ) {
+                        $expiration = $persistent_login_premium_options['cookieTime'];
                     } else {
                         $expiration = strtotime( '1 year', 0 );
                         // 1 year default

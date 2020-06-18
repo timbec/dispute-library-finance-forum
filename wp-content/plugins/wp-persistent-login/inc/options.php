@@ -116,42 +116,68 @@ function persistent_login_options_display()
 								    <div class="inside">
 									    
 									    <p>
-										    <?php 
+											    <?php 
         $users = persistent_login_getUserCount();
-        $devices = persistent_login_getDeviceCount();
         ?>
-						            <strong>
-							            <?php 
+							            <strong>
+								            <?php 
         echo  $users ;
         ?> user<?php 
         echo  ( $users === 1 ? ' ' : 's ' ) ;
         ?>
-					            	</strong> 
-					            	<?php 
+						            	</strong> 
+						            	<?php 
         echo  ( $users === 1 ? 'is ' : 'are ' ) ;
         ?>
-					            	logged into your website
-										  </p>
-										  
-										  <?php 
+						            	being kept logged into your website
+											  </p>
+											  
+											  <?php 
         $breakdown = persistent_login_getRolesBreakdown();
         ?> 
 											  <strong style="margin-bottom: 5px; display: block;">Usage Breakdown:</strong>
 											  <?php 
-        foreach ( $breakdown as $key => $value ) {
+        
+        if ( $breakdown && !empty($breakdown) ) {
             ?>
-														<span style="width: 250px; max-width: 45%; float: left; display: block; float: left;">
-															<?php 
-            echo  $key ;
-            ?>s: <strong><?php 
-            echo  $value ;
-            ?></strong>
-														</span>
+													  <?php 
+            foreach ( $breakdown as $key => $value ) {
+                ?>
+																<span style="width: 250px; max-width: 45%; float: left; display: block; float: left;">
+																	<?php 
+                echo  str_replace( [ '_', '-' ], ' ', ucfirst( $key ) ) ;
+                ?>s: <strong><?php 
+                echo  $value ;
+                ?></strong>
+																</span>
+														<?php 
+            }
+            ?>
+												<?php 
+        } else {
+            ?>
+													<p><em>Logins not counted yet.</em></p>
 												<?php 
         }
+        
         ?>
+												
 												<div style="display: block; clear: both;"></div>
 												
+												<?php 
+        $time_now = time();
+        $next_check = wp_next_scheduled( 'persistent_login_user_count' );
+        $difference = $next_check - $time_now;
+        $difference_in_hours = round( $difference / 60 / 60, 1 );
+        if ( $next_check ) {
+            echo  '<p style="margin-bottom: 0; color: #9e9e9e;">
+														Next automated check in approximately ' . $difference_in_hours . ' hours
+														</p>' ;
+        }
+        ?>
+												
+												<div style="display: block; clear: both;"></div>
+																								
 								    </div>
 									</div>
 			        	</div>

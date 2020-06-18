@@ -25,7 +25,7 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-<h3>header.php from 2020</h3>
+
 		<?php
 		wp_body_open();
 		?>

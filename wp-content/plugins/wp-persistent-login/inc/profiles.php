@@ -12,9 +12,6 @@ function persistent_login_admin_show_user_sessions( $user )
 
 function persistent_login_admin_render_sessions()
 {
-    // load which browser
-    global  $pluginPath ;
-    require_once $pluginPath . '/inc/whichbrowser/index.php';
     // setup vars
     global  $wpdb ;
     global  $tableRef ;
@@ -136,7 +133,7 @@ function persistent_login_admin_save_user_sessions( $user_id )
     }
     // remove session if requested
     
-    if ( $_POST['endSessions'] ) {
+    if ( isset( $_POST['endSessions'] ) ) {
         // setup vars
         $tokens = $_POST['endSessions'];
         foreach ( $tokens as $token ) {
